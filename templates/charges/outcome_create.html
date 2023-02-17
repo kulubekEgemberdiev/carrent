@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Создать расход </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Создать расход</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+    inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><label for="id_car_outcome_id">Машина:</label>
+                        <select name="car_outcome_id" class="form-control" required="" id="id_car_outcome_id">
+                            <option value="" selected=""></option>
+                            {% for car in cars %}
+                                <option value="{{ car.id }}">{{ car.title }} ({{ car.car_color }})</option>
+                            {% endfor %}
+                        </select></p>
+                    <p><label for="id_outcome_amount">Сумма:</label>
+                        <input type="number" class="form-control" name="outcome_amount" required=""
+                               id="id_outcome_amount">
+                    </p>
+                    <p><label for="id_outcome_remark">Заметки:</label>
+                        <input type="text" class="form-control" name="outcome_remark" maxlength="255"
+                               id="id_outcome_remark"></p>
+                    <p>
+                        <button type="submit" class="btn btn-success">Создать</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

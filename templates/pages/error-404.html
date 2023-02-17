@@ -1,0 +1,132 @@
+<!doctype html>
+{% load static i18n %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="Keywords" content="{% block keywords %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>{% if LANGUAGE_CODE == 'ru' %}
+        {% block ru_title %}{% endblock %} City Rent - Автопрокат в Бишкеке
+    {% else %}
+        {% block title %}{% endblock %} City Rent - Rent a car in Bishkek
+    {% endif %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+
+    <!-- All -->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/styles/all.css' %}">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+
+    <!-- flaticon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}"/>
+
+    <!-- mega menu -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mega-menu/mega_menu.css' %}"/>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick-theme.css' %}"/>
+
+    <!-- owl-carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl-carousel/owl.carousel.css' %}"/>
+
+    <!-- magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup/magnific-popup.css' %}"/>
+
+    <!-- jquery-ui -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %}"/>
+
+    <!-- revolution -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}"/>
+
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <!-- responsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
+
+    <!-- Style customizer -->
+    <link rel="stylesheet" href="#" data-style="styles"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-customizer.css' %}"/>
+
+
+</head>
+<body>
+<div id="loading">
+    <div id="loading-center">
+        <img src="{% static 'images/loader.gif' %}" alt="">
+    </div>
+</div>
+<section class="error-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-content text-center">
+                    <h2>404</h2>
+                    <img class="img-fluid center-block" src="{% static 'images/errors/23.png' %}" alt="">
+                    <h3 class="text-red">{% trans 'Оооййй' %}:( </h3>
+                    <strong class="text-black"> {% trans "Страница, которую вы искали, не была найдена" %}</strong>
+                    <p>{% blocktrans %}Не можете найти то, что ищите? Найдите минутку и сделайте поиск ниже или начните с {% endblocktrans %} <a
+                            href="{% url 'home' %}"> {% trans 'Главной страницы' %} </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<!-- jquery  -->
+<script type="text/javascript" src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+
+<!-- bootstrap -->
+<script type="text/javascript" src="{% static "js/popper.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+
+<!-- mega-menu -->
+<script type="text/javascript" src="{% static "js/mega-menu/mega_menu.js" %}"></script>
+
+<!-- appear -->
+<script type="text/javascript" src="{% static "js/jquery.appear.js" %}"></script>
+
+<!-- counter -->
+<script type="text/javascript" src="{% static "js/counter/jquery.countTo.js" %}"></script>
+
+<!-- isotope -->
+<script type="text/javascript" src="{% static "js/isotope/isotope.pkgd.min.js" %}"></script>
+
+<!-- jquery-ui -->
+<script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+
+<!-- owl-carousel -->
+<script type="text/javascript" src="{% static "js/owl-carousel/owl.carousel.min.js" %}"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+
+<!-- magnific popup -->
+<script type="text/javascript" src="{% static "js/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+<!-- revolution -->
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.tools.min.js" %}"></script>
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.revolution.min.js" %}"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.actions.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.carousel.min.js" %}"></script>
+
+<!-- style customizer  -->
+<script type="text/javascript" src="{% static "js/style-customizer.js" %}"></script>
+
+<!-- custom -->
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+
+</html>
+
+
+

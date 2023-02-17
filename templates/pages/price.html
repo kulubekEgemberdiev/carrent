@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block description %}
+Каталог автомобилей по самым выгодным ценам в Бишкеке
+{% endblock %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Тарифы |{% endblock %}
+{% else %}
+    {% block title %}Tariffs |{% endblock %}
+{% endif %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Тарифы' %}</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>{% trans 'Цены на машины' %}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+     service -->
+
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>{% trans 'Стоимость проката автомобилей в Бишкеке' %}:</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabs">
+                <div id="tab1" class="tabcontent accordion">
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Эконом (класс B)' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <!-- ================ -->
+                        <div class="unordered-lists">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Автомобиль' %}</th>
+                                    <th>{% trans 'Год выпуска' %}</th>
+                                    <th>1-2 {% trans 'cут' %}.</th>
+                                    <th>3-7 {% trans 'cут' %}.</th>
+                                    <th>8-20 {% trans 'cут' %}.</th>
+                                    <th>{% trans 'Более 20 cут' %}.</th>
+                                    <th>{% trans 'Залог' %}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for x in car_b %}
+                                    <tr>
+                                        <td><a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a></td>
+                                        <td>{{ x.year }}</td>
+                                        <td>{{ x.price_1_2 }}</td>
+                                        <td>{{ x.price_3_7 }}</td>
+                                        <td>{{ x.price_8_20 }}</td>
+                                        <td>{{ x.price_20 }}</td>
+                                        <td>3000</td>
+                                        <td><a href="#" class="callme btn order-button order-button-price-list" data-popup="req"
+                                               data-action="10">{% trans 'Заказать' %}</a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="gray">
+                        <!-- ================ -->
+                    </div>
+
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Средний (класс C)' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <!-- ================ -->
+                        <div class="unordered-lists">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Автомобиль' %}</th>
+                                    <th>{% trans 'Год выпуска' %}</th>
+                                    <th>1-2 {% trans 'cут' %}.</th>
+                                    <th>3-7 {% trans 'cут' %}.</th>
+                                    <th>8-20 {% trans 'cут' %}.</th>
+                                    <th>{% trans 'Более 20 cут' %}.</th>
+                                    <th>{% trans 'Залог' %}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for x in car_c %}<tr>
+                                        <td><a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a></td>
+                                        <td>{{ x.year }}</td>
+                                        <td>{{ x.price_1_2 }}</td>
+                                        <td>{{ x.price_3_7 }}</td>
+                                        <td>{{ x.price_8_20 }}</td>
+                                        <td>{{ x.price_20 }}</td>
+                                        <td>3000</td>
+                                        <td><a href="#" class="callme btn order-button order-button-price-list" data-popup="req"
+                                               data-action="10">{% trans 'Заказать' %}</a></td>
+                                   </tr> {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="gray">
+                        <!-- ================ -->
+                    </div>
+
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Бизнес (класс E)' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <!-- ================ -->
+                        <div class="unordered-lists">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Автомобиль' %}</th>
+                                    <th>{% trans 'Год выпуска' %}</th>
+                                    <th>1-2 {% trans 'cут' %}.</th>
+                                    <th>3-7 {% trans 'cут' %}.</th>
+                                    <th>8-20 {% trans 'cут' %}.</th>
+                                    <th>{% trans 'Более 20 cут' %}.</th>
+                                    <th>{% trans 'Залог' %}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for x in car_e %}<tr>
+                                        <td><a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a></td>
+                                        <td>{{ x.year }}</td>
+                                        <td>{{ x.price_1_2 }}</td>
+                                        <td>{{ x.price_3_7 }}</td>
+                                        <td>{{ x.price_8_20 }}</td>
+                                        <td>{{ x.price_20 }}</td>
+                                        <td>3000</td>
+                                        <td><a href="#" class="callme btn order-button order-button-price-list" data-popup="req"
+                                               data-action="10">{% trans 'Заказать' %}</a></td>
+                                  </tr>  {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="gray">
+                        <!-- ================ -->
+                    </div>
+
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Кроссовер (класс J)' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <!-- ================ -->
+                        <div class="unordered-lists">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Автомобиль' %}</th>
+                                    <th>{% trans 'Год выпуска' %}</th>
+                                    <th>1-2 {% trans 'cут' %}.</th>
+                                    <th>3-7 {% trans 'cут' %}.</th>
+                                    <th>8-20 {% trans 'cут' %}.</th>
+                                    <th>{% trans 'Более 20 cут' %}.</th>
+                                    <th>{% trans 'Залог' %}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for x in car_j %} <tr>
+                                        <td><a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a></td>
+                                        <td>{{ x.year }}</td>
+                                        <td>{{ x.price_1_2 }}</td>
+                                        <td>{{ x.price_3_7 }}</td>
+                                        <td>{{ x.price_8_20 }}</td>
+                                        <td>{{ x.price_20 }}</td>
+                                        <td>3000</td>
+                                        <td><a href="#" class="callme btn order-button order-button-price-list" data-popup="req"
+                                               data-action="10">{% trans 'Заказать' %}</a></td>
+                                   </tr> {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="gray">
+                        <!-- ================ -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

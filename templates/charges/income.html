@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Доход </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Доход</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+      inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <table class="table table-bordered table-hover toggle-circle" id="exampleFootableFiltering"
+                       data-paging="true" data-filtering="true" data-sorting="true">
+                    <tr>
+                        <th data-name="carName">Название машины</th>
+                        <th data-name="balance">Сумма</th>
+                        <th data-name="date">Дата</th>
+                    </tr>
+                    {% for x in object_list %}
+                        <tr class="show-hide-block">
+                            <td class="income-car-title">{{ x.car_income_id }}</td>
+                            <td>{{ x.income_amount }}</td>
+                            <td>{{ x.order_date }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th class="profit-title">Общая прибыль</th>
+                        <th class="profit"></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </section>
+    <script>
+        let count = 0;
+        {% for x in object_list %}
+            count = count + +{{ x.income_amount }};
+        {% endfor %}
+
+        console.log(count);
+
+        let profit = document.querySelector(".profit");
+
+        profit.innerHTML = count;
+    </script>
+{% endblock %}

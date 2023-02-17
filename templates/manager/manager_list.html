@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Админ панель </h1>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Выход</a>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><span>Админ панель</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'car_manager' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/traffic.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>БД Машин</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'users_list' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/group.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>БД Клиентов</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'income' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/pay.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Доход</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'outcome' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/bill.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Расход</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'profit' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/money.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Прибыль</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'reserve_list' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/calendar.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Календарь</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'agrement_list' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/deal.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Список договоров</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 manager_list">
+                    <a href="{% url 'service_manager' %}">
+                        <div class="feature-box text-center">
+                            <div class="icon mb-3">
+                                <img src="{% static 'images/service/hr.png' %}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>Услуги</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

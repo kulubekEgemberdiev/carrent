@@ -1,0 +1,609 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block description %}
+Аренда авто Бишкек - предлагаем услуги по аренде автомобилей в Бишкеке. Постоянно проводятся рекламные акции и скидки. Все автомобили застрахованы
+{% endblock %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Аренда авто в Бишкеке |{% endblock %}
+{% else %}
+    {% block title %}{% endblock %}
+{% endif %}
+{% block content %}
+
+    <!--=================================
+     rev slider -->
+    <section class="slider">
+        <div id="rev_slider_2_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="car-dealer-03"
+             style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+            <!-- START REVOLUTION SLIDER 5.2.6 fullwidth mode -->
+            <div id="rev_slider_2_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.2.6">
+                <ul>  <!-- SLIDE  -->
+                    <li data-index="rs-5" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                        data-hideslideonmobile="off" data-easein="default" data-easeout="default"
+                        data-masterspeed="default" data-thumb="revolution/assets/100x50_3176d-road-bg.jpg"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
+                        data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="{% static 'revolution/assets/3176d-road-bg.jpg' %}" alt=""
+                             data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                             class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-5-layer-6"
+                             data-x="center" data-hoffset=""
+                             data-y="270"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:800;e:Power4.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-mask_in="x:0px;y:0px;"
+                             data-start="1400"
+                             data-splitin="chars"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+                             data-elementdelay="0.05"
+
+                             style="z-index: 5; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;">
+                            {% trans 'Добро пожаловать на сайт City Rent' %}
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-5-layer-7"
+                             data-x="center" data-hoffset=""
+                             data-y="center" data-voffset="-140"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:800;e:Power4.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                             data-start="1700"
+                             data-splitin="chars"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+                             data-elementdelay="0.05"
+
+                             style="z-index: 6; white-space: nowrap; font-size: 70px; line-height: 70px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;">
+                            {% trans 'Выберите себе машину' %}
+                        </div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption button red tp-resizeme tp-caption1"
+                             id="slide-5-layer-10"
+                             data-x="center" data-hoffset=""
+                             data-y="bottom" data-voffset="130"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+                             data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power0.easeIn;"
+                             data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);"
+
+                             data-transform_in="y:bottom;s:600;e:Power2.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="3300"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 11; white-space: nowrap; font-size: 20px; line-height: 18px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Open Sans;text-align:center;text-transform:uppercase;background-color:rgba(219, 45, 46, 1.00);padding:12px 20px 12px 20px;border-color:rgba(0, 0, 0, 1.00);outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                            {% trans 'Подробнее' %}
+                        </div>
+
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-5-layer-12"
+                             data-x="right" data-hoffset="70"
+                             data-y="center" data-voffset="135"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:-50px;opacity:0;s:800;e:Power2.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="620"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 8;"><img src="{% static 'revolution/assets/4f45e-07-bmw-s2.png' %}" alt=""
+                                                      data-ww="auto" data-hh="auto" data-no-retina></div>
+
+                        <!-- LAYER NR. 5 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-5-layer-11"
+                             data-x="120"
+                             data-y="center" data-voffset="130"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:50px;opacity:0;s:800;e:Power2.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="200"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 9;"><img src="{% static 'revolution/assets/e13ec-06-audi-s2.png' %}" alt=""
+                                                      data-ww="auto" data-hh="auto" data-no-retina></div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-index="rs-6" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                        data-hideslideonmobile="off" data-easein="default" data-easeout="default"
+                        data-masterspeed="default" data-thumb="revolution/assets/100x50_3176d-road-bg.jpg"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
+                        data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="{% static 'revolution/assets/3176d-road-bg.jpg' %}" alt=""
+                             data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                             class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-4"
+                             data-x="3"
+                             data-y="center" data-voffset="50"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:50px;opacity:0;s:1500;e:Power3.easeOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="2060"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 5;"><img src="{% static 'revolution/assets/74231-04-audi.png' %}" alt=""
+                                                      data-ww="auto" data-hh="auto" data-no-retina></div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-5"
+                             data-x="right" data-hoffset="-10"
+                             data-y="center" data-voffset="60"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:-50px;opacity:0;s:1500;e:Power3.easeOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="2060"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 6;"><img src="{% static 'revolution/assets/35261-05-honda.png' %}" alt=""
+                                                      data-ww="auto" data-hh="auto" data-no-retina></div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-6"
+                             data-x="center" data-hoffset=""
+                             data-y="270"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:300;e:Power4.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-mask_in="x:0px;y:0px;"
+                             data-start="3260"
+                             data-splitin="chars"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+                             data-elementdelay="0.05"
+
+                             style="z-index: 7; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;">
+                            {% trans 'Добро пожаловать на City Rent' %}
+                        </div>
+
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-7"
+                             data-x="center" data-hoffset=""
+                             data-y="center" data-voffset="-140"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:300;e:Power4.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                             data-start="4290"
+                             data-splitin="chars"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+                             data-elementdelay="0.05"
+
+                             style="z-index: 8; white-space: nowrap; font-size: 70px; line-height: 70px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;text-align:center;text-transform:uppercase;">
+                            {% trans 'Выберите машину' %}
+                        </div>
+
+                        <!-- LAYER NR. 5 -->
+                        <div class="tp-caption button red  tp-resizeme tp-caption1"
+                             id="slide-6-layer-10"
+                             data-x="center" data-hoffset=""
+                             data-y="bottom" data-voffset="140"
+                             data-width="['auto']"
+                             data-height="['auto']"
+                             data-transform_idle="o:1;"
+                             data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power0.easeIn;"
+                             data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);"
+
+                             data-transform_in="y:bottom;s:600;e:Power2.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="5329.8614501953"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-responsive_offset="on"
+
+                             data-end="8999.8614501953"
+
+                             style="z-index: 11; white-space: nowrap; font-size: 20px; line-height: 18px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Open Sans;text-align:center;text-transform:uppercase;background-color:rgba(219, 45, 46, 1.00);padding:12px 20px 12px 20px;border-color:rgba(0, 0, 0, 1.00);outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                            {% trans 'Подробнее' %}
+                        </div>
+
+                        <!-- LAYER NR. 6 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-3"
+                             data-x="right" data-hoffset="159"
+                             data-y="center" data-voffset="81"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:-50px;opacity:0;s:1500;e:Power3.easeOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="1220"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 10;"><img src="{% static 'revolution/assets/ec416-03-huydai.png' %}" alt=""
+                                                       data-ww="auto" data-hh="auto" data-no-retina></div>
+
+                        <!-- LAYER NR. 7 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-2"
+                             data-x="202"
+                             data-y="center" data-voffset="80"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="x:50px;opacity:0;s:1500;e:Power3.easeOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="1200"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 11;"><img src="{% static 'revolution/assets/1fa45-02-bmw.png' %}" alt=""
+                                                       data-ww="auto" data-hh="auto" data-no-retina></div>
+
+                        <!-- LAYER NR. 8 -->
+                        <div class="tp-caption   tp-resizeme"
+                             id="slide-6-layer-1"
+                             data-x="center" data-hoffset=""
+                             data-y="center" data-voffset="100"
+                             data-width="['none','none','none','none']"
+                             data-height="['none','none','none','none']"
+                             data-transform_idle="o:1;"
+
+                             data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:670;e:Power3.easeInOut;"
+                             data-transform_out="opacity:0;s:300;"
+                             data-start="500"
+                             data-responsive_offset="on"
+
+
+                             style="z-index: 12;"><img src="{% static 'revolution/assets/95515-o1-kia.png' %}" alt=""
+                                                       data-ww="auto" data-hh="auto" data-no-retina></div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+      rev slider -->
+
+    <!--=================================
+     welcome -->
+
+    <section class="welcome-block objects-car page-section-ptb white-bg">
+    <div class="row justify-content-around">
+            <div class="objects-left left col-6 col-md-4">
+                <img class="img-fluid objects-1" src="{% static 'images/objects/01.jpg' %}"
+                                            alt=""></div>
+        <div class="objects-right right col-6 col-md-4">
+            <img class="img-fluid objects-2" src="{% static 'images/objects/02.jpg' %}"
+                                              alt=""></div>
+
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <hr>
+                        <h5>{% trans 'Добро пожаловать в City Rent' %}</h5>
+                        <h2>{% trans 'Автомобили' %}</h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 car-home">
+                    <div class="feature-box text-center">
+                        <a href="{% url 'class_b' %}">
+                            <div class="icon">
+                                <img src="{% static 'images/hynday.png' %}">
+                            </div>
+                            <div class="content">
+                                <h6>{% trans 'Эконом' %}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 car-home">
+                    <div class="feature-box text-center">
+                        <a href="{% url 'class_c' %}">
+                            <div class="icon">
+                                <img src="{% static 'images/sedan.jpg' %}">
+                            </div>
+                            <div class="content">
+                                <h6>{% trans 'Средний' %}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 car-home">
+                    <div class="feature-box text-center">
+                        <a href="{% url 'class_e' %}">
+                            <div class="icon">
+                                <img src="{% static 'images/business.jpg' %}">
+                            </div>
+                            <div class="content">
+                                <h6>{% trans 'Бизнес' %}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 car-home">
+                    <div class="feature-box text-center">
+                        <a href="{% url 'class_j' %}">
+                            <div class="icon">
+                                <img src="{% static 'images/krosover2.PNG' %}">
+                            </div>
+                            <div class="content">
+                                <h6>{% trans 'Кроссовер' %}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="halp-call text-center">
+                        <img class="img-fluid" src="{% static 'images/01.jpg' %}" alt="">
+                        <span>{% trans 'Остались вопросы' %}</span>
+                        <h2 class="text-red"><a href="tel:+996771979793">+(996) 771 97-97-93</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     welcome -->
+
+    <!--=================================
+     feature-car -->
+
+        <section class="feature-car bg-2 bg-overlay-black-70 page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="section-title">
+                        <span class="text-white">{% trans 'Выбери себе машину' %}</span>
+                        <h2 class="text-white">{% trans 'Наши машины' %} </h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme" data-nav-arrow="true" data-items="4" data-md-items="4"
+                         data-sm-items="2" data-xs-items="1" data-space="20">
+                        {% for x in cars %}
+                            <div class="item">
+                                <div class="car-item text-center">
+                                    <a href="{% url 'car_detail' x.pk %}">
+                                        <div class="car-image">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <div class="car-overlay-banner">
+                                                <ul>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="car-list">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-registered"></i> {{ x.year }}</li>
+                                                <li><i class="fa fa-cog"></i>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        {% if x.gear_box == 'Механика' %}
+                                                            Mechanics
+                                                        {% elif x.gear_box == 'Вариатор' %}
+                                                            Variator
+                                                        {% elif x.gear_box == 'Автомат' %}
+                                                            Automatic
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ x.gear_box }}
+                                                    {% endif %}
+                                                </li>
+                                                <li><i class="fa fa-dashboard"></i> {{ x.engine_cap }} {% trans 'куб' %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="car-content">
+                                            <div class="star">
+                                                {% if x.car_class == 'Эконом (класс B)' %}
+                                                    <a href="{% url 'class_b' %}"
+                                                       class="old-price">#{% trans 'Эконом' %}</a>
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    <a href="{% url 'class_c' %}"
+                                                       class="old-price">#{% trans 'Средний' %}</a>
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    <a href="{% url 'class_e' %}"
+                                                       class="old-price">#{% trans 'Бизнес' %}</a>
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    <a href="{% url 'class_j' %}"
+                                                       class="old-price">#{% trans 'Кроссовер' %}</a>
+                                                {% endif %}
+                                            </div>
+                                            <a href="#">{{ x.title }}</a>
+                                            <div class="separator"></div>
+                                            <div class="price">
+                                                <span class="new-price">{% trans 'от' %} {{ x.price_20 }} {% trans 'сом/сут' %} </span>
+                                            </div>
+                                            <div class="order">
+                                                <a class="order-button">{% trans 'Заказать' %}</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     feature-car -->
+
+    <!--=================================
+     custom block -->
+
+    <section class="bg-7">
+        <div class="container-fluid text-center">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-md-12 red-bg custom-block-4">
+                    <div class="row">
+                        <div class="col-md-6"> <!--                  STOP                                    -->
+                            <div class="feature-box-1 text-md-right text-left">
+                                <div class="icon">
+                                    <i class="bi bi-car-front-fill" style="color: white;"></i>
+                                </div>
+                                <div class="content">
+                                    <h5 class="text-light">{% trans 'Простая аренда' %}</h5>
+                                    <p class="text-light">{% trans 'Оформите заявку прямо на сайте' %}</p>
+                                </div>
+                            </div>
+                            <div class="feature-box-1 text-md-right text-left">
+                                <div class="icon text-light">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                </div>
+                                <div class="content">
+                                    <h5 class="text-light">{% trans 'Безопасные автомобили' %}</h5>
+                                    <p class="text-light">{% blocktrans %}Новые застрахованные автомобили, своевременное
+                                        прохождение ТО,
+                                        защита двигателя у всех автомобилей{% endblocktrans %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-box-1 text-md-right text-left">
+                                <div class="icon text-light">
+                                    <i class="bi bi-globe-americas"></i>
+                                </div>
+                                <div class="content">
+                                    <h6 class="text-light">{% trans 'Мы находимся в разных регионах' %}</h6>
+                                    <p class="text-light">{% trans 'Возврат автомобиля в любом нашем филиале' %}</p>
+                                </div>
+                            </div>
+                            <div class="feature-box-1 text-md-right text-left text-light">
+                                <div class="icon">
+                                    <i class="bi bi-music-note-beamed"></i>
+                                </div>
+                                <div class="content">
+                                    <h5 class="text-light">{% trans 'Сигнализация' %}</h5>
+                                    <p class="text-light">{% trans 'У всех автомобилей' %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     custom block -->
+
+
+    <!--=================================
+     custom block -->
+
+    <section class="bg-7">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-6 col-md-12">
+                </div>
+                <div class="col-lg-6 col-md-12 gray-bg text-center">
+                    <div class="custom-block-1">
+                        <h4>{% trans 'Остались вопросы?' %}</h4>
+                        <span>{% trans 'Наш менеджер перезвонит вам в течении дня' %}</span>
+                        <form class="contactUs-form" action="{% url 'home_send_email' %}">
+                            {% csrf_token %}
+                            <div class="messages">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+                                             role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <input type="text" name="name" class="question" placeholder="{% trans 'Имя' %}">
+                            <input type="text" name="email" class="question" placeholder="email">
+                            <input type="text" name="phone" class="question" placeholder="{% trans 'Телефон' %}">
+                            <br>
+                            <button class="btn btn-danger">{% trans 'Отправить' %}</button>
+                        </form>
+                        <style>
+                            input.question {
+                                padding: 5px;
+                                color: #fff;
+                                background-color: #eee;
+                                border: 1px solid;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     custom block -->
+
+
+
+{% endblock %}

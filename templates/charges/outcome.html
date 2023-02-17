@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Расход </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Расход</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+      inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <a href="{% url 'outcome_create' %}" class="btn btn-danger mb-3">Создать рассход</a>
+
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-hover toggle-circle" id="exampleFootableFiltering"
+                       data-paging="true" data-filtering="true" data-sorting="true">
+                    <tr>
+                        <th data-name="carName">Название машины</th>
+                        <th data-name="balance">Сумма</th>
+                        <th>Комментарии</th>
+                        <th data-name="date">Дата</th>
+                    </tr>
+                    {% for x in object_list %}
+                        <tr>
+                            <td>{{ x.car_outcome_id }}</td>
+                            <td>{{ x.outcome_amount }}</td>
+                            <td>{% if x.outcome_remark %}{{ x.outcome_remark }}{% endif %}</td>
+                            <td>{{ x.order_date }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th class="outcome-title">Общие расходы</th>
+                        <th class="outcome"></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="h30">&nbsp;</div>
+
+        <div class="conditionTab">
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+        <script>
+        let count = 0;
+        {% for x in object_list %}
+            count = count + +{{ x.outcome_amount }};
+        {% endfor %}
+
+        console.log(count);
+
+        let outcome = document.querySelector(".outcome");
+
+        outcome.innerHTML = count;
+    </script>
+{% endblock %}

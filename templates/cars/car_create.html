@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Добавить машину </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Добавить машину</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+      inner-intro -->
+    <section class="objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="col-md-12">
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.car_owner|as_crispy_field }}
+                            {{ form.car_number|as_crispy_field }}
+                            {{ form.title|as_crispy_field }}
+                            {{ form.car_price|as_crispy_field }}
+                            {{ form.year|as_crispy_field }}
+                            {{ form.engine_cap|as_crispy_field }}
+                            {{ form.engine_pow|as_crispy_field }}
+                            {{ form.car_color_rus|as_crispy_field }}
+                            {{ form.gear_box|as_crispy_field }}
+                            {{ form.fuel_type|as_crispy_field }}
+                            {{ form.description_rus|as_crispy_field }}
+                            {{ form.fuel_tank|as_crispy_field }}
+                            {{ form.car_body|as_crispy_field }}
+                            {{ form.function_car|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.vin|as_crispy_field }}
+                            {{ form.registration|as_crispy_field }}
+                            {{ form.price_1_2|as_crispy_field }}
+                            {{ form.price_3_7|as_crispy_field }}
+                            {{ form.price_8_20|as_crispy_field }}
+                            {{ form.price_20|as_crispy_field }}
+                            {{ form.car_class|as_crispy_field }}
+                            {{ form.car_color|as_crispy_field }}
+                            {{ form.wd|as_crispy_field }}
+                            {{ form.mileage|as_crispy_field }}
+                            {{ form.description|as_crispy_field }}
+                            {{ form.image1|as_crispy_field }}
+                            {{ form.image2|as_crispy_field }}
+                            {{ form.image3|as_crispy_field }}
+                            {{ form.image4|as_crispy_field }}
+                            {{ form.image5|as_crispy_field }}
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <button type="submit" class="btn btn-info">Создать</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="h30">&nbsp;</div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

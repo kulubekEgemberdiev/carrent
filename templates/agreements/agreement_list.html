@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Список договоров</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Список договоров</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+      inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <table class="table table-bordered table-hover toggle-circle" id="exampleFootableFiltering"
+                       data-paging="true" data-filtering="true" data-sorting="true">
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>ФИО клиента</th>
+                        <th>Марка модель</th>
+                        <th>Начало</th>
+                        <th>Окончание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in object_list %}
+
+                        <tr>
+                            <td><a href="{% url 'agreement_detail' x.pk %}">№ {{ x.registration_date|date:"y" }} -
+                                00{{ x.id }}</a></td>
+                            <td>{{ x.reserve_id.users.second_name }} {{ x.reserve_id.users.name }} {{ x.reserve_id.users.last_name }}</td>
+                            <td>{{ x.reserve_id.reserve_car.title }} {{ x.reserve_id.reserve_car.car_color }}</td>
+                            <td>{{ x.reserve_id.departure_date }}</td>
+                            <td>{{ x.reserve_id.arrival_date }}</td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

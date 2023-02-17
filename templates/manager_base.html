@@ -1,0 +1,389 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{% if LANGUAGE_CODE == 'ru' %}
+        {% block ru_title %}{% endblock %} City Rent - Автопрокат в Бишкеке
+    {% else %}
+        {% block title %}{% endblock %} City Rent - Rent a car in Bishkek
+    {% endif %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+
+    <!-- All -->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/styles/all.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <!-- flaticon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}"/>
+
+    <!-- mega menu -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mega-menu/mega_menu.css' %}"/>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick-theme.css' %}"/>
+
+    <!-- owl-carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl-carousel/owl.carousel.css' %}"/>
+
+    <!-- magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup/magnific-popup.css' %}"/>
+
+    <!-- jquery-ui -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %}"/>
+
+    <!-- revolution -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}"/>
+
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <!-- responsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
+
+    <!-- Style customizer -->
+    <link rel="stylesheet" href="#" data-style="styles"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-customizer.css' %}"/>
+
+    <!-- Table -->
+    <link rel="stylesheet" href="{% static 'table/vendor/animsition/animsition.css' %}">
+    <link rel="stylesheet" href="{% static 'table/vendor/footable/footable.core.css' %}">
+    <link rel="stylesheet" href="{% static 'table/fonts/web-icons/web-icons.min.css' %}">
+
+    <style>
+        .main-reserve-create {
+            text-align: center;
+        }
+
+        .reserve-container {
+            padding: 2rem 3rem;
+            text-align: center;
+        }
+
+        .reserve-main {
+            margin: 0 auto;
+            width: 35%;
+            text-align: left;
+        }
+
+        .reserve-complite {
+            display: block;
+            margin-top: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            padding: 0 20px;
+            font-family: "Avenir Next Cyr";
+            border: 1px solid grey;
+        }
+
+        .form-control {
+            height: auto !important;
+        }
+    </style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161122176-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161122176-1');
+</script>
+
+</head>
+<body>
+{% load static %}
+
+
+<header id="header" class="defualt">
+    <div class="topbar">
+        <div class="container nav-main-padding-null">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="topbar-left text-lg-left text-center">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-envelope-o"> </i>cityrent.kg@gmail.com</li>
+                            <li><i class="fa fa-clock-o"></i>{% trans 'Работаем' %} 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 social-media-main">
+                    <a href="viber://chat?number=+996771979793"><img class="nav-item-social"
+                                                                     src="{% static 'images/viber.png' %}" alt=""></a>
+                    <a href="https://t.me/+996771979793"><img class="nav-item-social"
+                                                              src="{% static 'images/telegram-item.png' %}" alt=""></a>
+                    <a href="https://wa.me/996771979793"><img class="nav-item-social"
+                                                              src="{% static 'images/whatsapp-item.png' %}" alt=""></a>
+                </div>
+                <div class="col-lg-3 col-md-9 lang-change-nav">
+                    <div class="topbar-right text-lg-right text-center">
+                        <ul class="list-inline">
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <button class="btn-outline-light lang-top" type="submit"
+                                                name="language"
+                                                value="{{ language.code }}"
+                                                style="background: none;"
+                                        >
+                                            {{ language.code.upper }}
+                                        </button>
+                                    {% endfor %}
+                                </form>
+                            </li>
+                            <li><i class="fa fa-phone"></i> +(996) 771 97-97-93</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=================================
+     mega menu -->
+
+    <div class="menu">
+        <!-- menu start -->
+        <nav id="menu" class="mega-menu">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+                <div class="container nav-main-padding-null">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- menu logo -->
+                            <ul class="menu-logo">
+                                <li>
+                                    <a href="{% url 'home' %}"><img id="logo_img"
+                                                                    src="{% static 'images/logo-light.png' %}"
+                                                                    alt="logo"> </a>
+                                </li>
+                            </ul>
+                            <!-- menu links -->
+                            <ul class="menu-links">
+
+                                <!-- active class -->
+                                <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}><a
+                                        href="{% url 'home' %}">{% trans 'Главная' %} </a></li>
+                                <li {% if request.resolver_match.url_name == 'cars_list' %}class="active"{% endif %}><a
+                                        href="{% url 'cars_list' %}">{% trans 'Автомобили' %} </a></li>
+                                <li {% if request.resolver_match.url_name == 'condition' %}class="active"{% endif %}><a
+                                        href="{% url 'condition' %}">{% trans 'Условия проката' %} </a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'price' %}class="active"{% endif %}><a
+                                        href="{% url 'price' %}">{% trans 'Тарифы' %} </a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'service' %}class="active"{% endif %}><a
+                                        href="{% url 'service' %}"> {% trans 'Услуги' %}</a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}><a
+                                        href="{% url 'contact' %}"> {% trans 'Контакты' %}</a>
+                                </li>
+                                {% if user.is_authenticated %}
+                                    <li {% if request.resolver_match.url_name == 'manager_list' %}class="active"{% endif %}>
+                                        <a href="{% url 'manager_list' %}">{% trans 'Админ панель' %}</a></li>
+
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+        <!-- menu end -->
+    </div>
+</header>
+
+<!--=================================
+ header -->
+
+
+<!-- jquery  -->
+<script type="text/javascript" src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+
+<!-- bootstrap -->
+<script type="text/javascript" src="{% static "js/popper.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+
+<!-- mega-menu -->
+<script type="text/javascript" src="{% static "js/mega-menu/mega_menu.js" %}"></script>
+
+<!-- appear -->
+<script type="text/javascript" src="{% static "js/jquery.appear.js" %}"></script>
+
+<!-- counter -->
+<script type="text/javascript" src="{% static "js/counter/jquery.countTo.js" %}"></script>
+
+<!-- isotope -->
+<script type="text/javascript" src="{% static "js/isotope/isotope.pkgd.min.js" %}"></script>
+
+<!-- jquery-ui -->
+<script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+
+<!-- owl-carousel -->
+<script type="text/javascript" src="{% static "js/owl-carousel/owl.carousel.min.js" %}"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+
+<!-- magnific popup -->
+<script type="text/javascript" src="{% static "js/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+<!-- revolution -->
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.tools.min.js" %}"></script>
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.revolution.min.js" %}"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.actions.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.carousel.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.kenburn.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.layeranimation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.migration.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.navigation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.parallax.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.slideanims.min.js" %}"></script>
+<script type="text/javascript" src="{% static "revolution/js/extensions/revolution.extension.video.min.js" %}"></script>
+
+<!-- style customizer  -->
+<script type="text/javascript" src="{% static "js/style-customizer.js" %}"></script>
+
+<!-- custom -->
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+
+<!-- Table -->
+<script src="{% static 'table/vendor/babel-external-helpers/babel-external-helpers.js' %}"></script>
+<script src="{% static 'table/vendor/footable/footable.min.js' %}"></script>
+<script src="{% static 'table/examples/footable.js' %}"></script>
+
+<script type="text/javascript">
+    (function ($) {
+        "use strict";
+
+        var tpj = jQuery;
+        var revapi2;
+        tpj(document).ready(function () {
+            if (tpj("#rev_slider_2_1").revolution == undefined) {
+                revslider_showDoubleJqueryError("#rev_slider_2_1");
+            } else {
+                revapi2 = tpj("#rev_slider_2_1").show().revolution({
+                    sliderType: "standard",
+                    sliderLayout: "fullwidth",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        mouseScrollReverse: "default",
+                        onHoverStop: "off",
+                        bullets: {
+                            enable: true,
+                            hide_onmobile: false,
+                            style: "hermes",
+                            hide_onleave: false,
+                            direction: "horizontal",
+                            h_align: "center",
+                            v_align: "bottom",
+                            h_offset: 0,
+                            v_offset: 50,
+                            space: 10,
+                            tmp: ''
+                        }
+                    },
+                    visibilityLevels: [1240, 1024, 778, 480],
+                    gridwidth: 1570,
+                    gridheight: 1000,
+                    lazyType: "none",
+                    shadow: 0,
+                    spinner: "spinner3",
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    disableProgressBar: "on",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        nextSlideOnWindowFocus: "off",
+                        disableFocusListener: false,
+                    }
+                });
+            }
+        });
+    })(jQuery);
+
+    let modal = document.querySelector(".modal-window"),
+        closeModal = document.querySelector("#modalX"),
+        orderBtn = document.querySelectorAll(".order-button");
+
+    console.log(modal);
+    console.log(closeModal);
+
+
+    orderBtn.forEach(item => item.addEventListener("click", function () {
+        modal.style.display = "flex";
+    }));
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    {#let $j = jQuery.noConflict();#}
+    {##}
+    {#$j("#start-date").datepicker();#}
+    {##}
+    {#$("#end-date").datepicker();#}
+
+    let minDate = new Date(),
+        day = minDate.getDay();
+
+    $("#start-date").datepicker({
+        minDate: minDate,
+        numberOfMonth: 1,
+        onClose: function (selectDate) {
+            $("#end-date").datepicker("option", "minDate", selectDate)
+        },
+        dateFormat: 'dd.mm.yy'
+    });
+    $("#end-date").datepicker({
+        minDate: minDate,
+        numberOfMonth: 1,
+        dateFormat: 'dd.mm.yy'
+    });
+</script>
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

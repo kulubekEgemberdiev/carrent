@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'ru' %}
+        {% block ru_title %}Условия проката |{% endblock %}
+    {% else %}
+        {% block title %}Conditions |{% endblock %}
+    {% endif %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Условия проката' %}</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>{% trans 'Условия проката' %}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+     service -->
+
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row neccesery-docs">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>{% trans 'Необходимые документы' %}:</h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row neccesery-docs">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon mb-3">
+                            <img src="{% static 'images/service/cond1.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <h6>{% trans 'Если Вы гражданин КР' %}</h6>
+                            <p>{% trans 'то Вам нужно будет предоставить паспорт и водительское удостоверение' %}.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon mb-3">
+                            <img src="{% static 'images/service/cond2.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <h6>{% trans 'Если Вы не гражданин КР' %}</h6>
+                            <p>{% blocktrans %}то Вам нужно будет предоставить паспорт, въездную визу или миграционную карту и
+                                водительское удостоверение международного образца{% endblocktrans %}.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row neccesery-docs">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>{% trans 'Требования к арендатору' %}:</h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row neccesery-docs">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon mb-3">
+                            <img src="{% static 'images/service/cond3.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <h6>{% trans 'Возраст арендатора от 23 лет' %}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon mb-3">
+                            <img src="{% static 'images/service/cond2.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <h6>{% trans 'Стаж вождения от 3-х лет' %}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs">
+                <div id="tab1" class="tabcontent accordion">
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Условия оплаты' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>{% blocktrans %}100% предоплата всей стоимости проката транспортного средства. Оплатить можно любым
+                                удобным для Вас способом: наличными, банковской дебетовой или кредитной картой, через
+                                сайт, банковским переводом.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Залоговый депозит для граждан Кыргызстана составляет 3 000 - 5 000 сом, для граждан
+                                других государств – 10 000 сом. Если Вы соблюдаете условия аренды автомобиля,
+                                прописанные в договоре, залог возвращается.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Если Вы вернете автомобиль раньше, мы пересчитаем стоимость аренды и вернем разницу.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Если Вы задержите возврат автомобиля больше чем на час, нужно будет оплатить следующие
+                                сутки проката.{% endblocktrans %}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="accordion-title">
+                        <a href="#">{% trans 'Дополнительные условия' %}</a>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>{% blocktrans %}Минимальная продолжительность аренды – 1 сутки (24 часа) с момента получения
+                                автомобиля.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Мы выдадим и примем у Вас автомобиль в любое время и по любому адресу по предварительной
+                                договоренности. Стоимость доставки/возврата в черте города от 400 сом.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Когда мы отдаем Вам автомобиль он чистый и с полным баком. Просим вернуть его также
+                                чистым и заправленным. Если автомобиль возвращается грязным и/или не заправленным, Вам
+                                нужно будет оплатить компенсацию из расчета: 400 - 700 сом. за мойку в зависимости от
+                                автомобиля и степени загрязнения, и заправку из расчета 50 сом/литр топлива;{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}На прокатном автомобиле запрещено выезжать за пределы Кыргызстана. Если Вам нужно
+                                выехать из города / области – предупредите нас об этом при оформлении договора.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Если за руль арендованного ТС сядет дополнительный водитель, он должен быть записан в
+                                договор. Требования по возрасту, стажу, необходимым документам сохраняются.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Ограничение пробега для автомобиля - 300 км в сутки.{% endblocktrans %}</li>
+                            <li>{% blocktrans %}Считаем суммарно за весь период аренды. При превышении лимита – оплата по 5 сом за
+                                каждый километр свыше.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Арендодатель может отказать в выдаче автомобиля без объяснения причины, о чем уведомляет
+                                клиента не менее чем за 2 часа до предполагаемой выдачи.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Курить в автомобиле запрещено!{% endblocktrans %}</li>
+                            <li>{% blocktrans %}При ДТП и любом причинении ущерба автомобилю первым делом известите нас, мы расскажем,
+                                как действовать в сложившейся ситуации. Если ДТП произошло не по Вашей вине, и
+                                предоставлены все справки с места ДТП – сумма ответственности равна нулю.{% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}За повреждение шин - полная материальная ответственность.{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}

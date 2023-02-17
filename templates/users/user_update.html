@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Изменить клиента </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i></li>
+                        <li><span>Изменить клиента</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+    inner-intro -->
+    <section class="objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.name|as_crispy_field }}
+                        {{ form.second_name|as_crispy_field }}
+                        {{ form.last_name|as_crispy_field }}
+                        {{ form.birthday|as_crispy_field }}
+                        {{ form.phone|as_crispy_field }}
+                        {{ form.email|as_crispy_field }}
+                        {{ form.address|as_crispy_field }}
+                        {{ form.drivers_licence|as_crispy_field }}
+                        {{ form.drivers_licence_img|as_crispy_field }}
+
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.passport_doled_out|as_crispy_field }}
+                        {{ form.passport_series|as_crispy_field }}
+                        {{ form.passport_number|as_crispy_field }}
+                        {{ form.passport_issued|as_crispy_field }}
+                        {{ form.passport_img|as_crispy_field }}
+                        {{ form.experience|as_crispy_field }}
+                        {{ form.drivers_series|as_crispy_field }}
+                        {{ form.drivers_number|as_crispy_field }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Создать</button>
+                </div>
+            </form>
+            <div class="h30">&nbsp;</div>
+
+        </div>
+    </section>
+
+{% endblock %}

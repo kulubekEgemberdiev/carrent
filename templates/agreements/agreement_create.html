@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Создать договор</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Создать договор</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <section class="objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="agreement-main">
+                        <style>
+                            p.hidden {
+                                display: none;
+                            }
+                        </style>
+
+                        <h2 class="agreement-main-title">Договор аренды:</h2>
+                        <p class="hidden"><label for="id_reserve_id">Заказ:</label> <select name="reserve_id"
+                                                                                            required=""
+                                                                                            id="id_reserve_id">
+                            <option value="{{ reserve_info.id }}" selected="">{{ reserve_info.reserve_car }}</option>
+                        </select></p>
+                        <table class="create-agr-content-main">
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Машина</td>
+                                <td class="create-agr-content">{{ reserve_info.reserve_car }}</td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Клиент</td>
+                                <td class="create-agr-content">{{ reserve_info.users.name }} {{ reserve_info.users.second_name }} {{ reserve_info.users.last_name }}</td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Начало:</td>
+                                <td class="create-agr-content">{{ reserve_info.departure_date }}</td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Дата бронирования</td>
+                                <td class="create-agr-content">{{ reserve_info.registration_date }}</td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Количество дней</td>
+                                <td class="create-agr-content">{{ reserve_info.total_days }}</td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Сумма</td>
+                                <td class="create-agr-content"><input type="number" name="total" required=""
+                                                                      value="{{ reserve_info.total_summ }}"
+                                                                      id="id_total" class="agreement-inputs"></td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Услуги</td>
+                                <td class="create-agr-content"></td>
+                            </tr>
+                            {% for x in service %}
+                                <tr class="create-agr-main">
+                                    <td class="create-agr-title thead-dark">{{ x.name }}</td>
+                                    <td class="create-agr-content"><input type="checkbox" id="id_service" name="service"
+                                                                          value="{{ x.pk }}" price="{{ x.price }}"
+                                                                          class="select-items"></td>
+                                </tr>
+                            {% endfor %}
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Итоговая сумма</td>
+                                <td class="create-agr-content"><input class="summ agreement-inputs" type="number" name="total_summ"
+                                                                      required=""
+                                                                      value="{{ reserve_info.total_summ }}"></td>
+                            </tr>
+                            <tr class="create-agr-main">
+                                <td class="create-agr-title thead-dark">Территория использования ТС</td>
+                                <td class="create-agr-content"><input type="text" name="territory_of_use" class="agreement-inputs" value="{{ reserve_info.territory_of_use }}" placeholder="г. Бишкек"></td>
+                            </tr>
+                        </table>
+                        {#                        <p><b>Машина:</b> {{ reserve_info.reserve_car }}</p>#}
+                        {#                        <p>#}
+                        {#                            <b>Клиент</b>: {{ reserve_info.users.name }} {{ reserve_info.users.second_name }} {{ reserve_info.users.last_name }}#}
+                        {#                        </p>#}
+                        {#                        <p><b>Начало</b>: {{ reserve_info.departure_date }}</p>#}
+                        {#                        <p><b>Конец</b>: {{ reserve_info.arrival_date }}</p>#}
+                        {#                        <p><b>Дата бронирования</b>: {{ reserve_info.registration_date }}</p>#}
+                        {#                        <p><b>Количество дней</b>: {{ reserve_info.total_days }}</p>#}
+                        {#                        <div class="main-service-items">#}
+                        {#                            {% for x in service %}#}
+                        {#                                <div class="select-content">#}
+                        {#                                    <input type="checkbox" id="id_service" name="service"#}
+                        {#                                           value="{{ x.pk }}" price="{{ x.price }}" class="select-items">#}
+                        {#                                    <label for="service">{{ x.name }}</label>#}
+                        {#                                </div>#}
+                        {#                            {% endfor %}#}
+                        {#                        </div>#}
+
+{#                        </p>#}
+{#                        <p><label for="id_total_summ"><b>Итоговая сумма</b>:</label>#}
+{#                            <input class="summ" type="number" name="total_summ" required=""#}
+{#                                   value="{{ reserve_info.total_summ }}">#}
+{#                        </p>#}
+{#                        <p><label for="id_territory_of_use"><b>Территория использования ТС</b>:</label>#}
+{#                            <input type="text" name="territory_of_use" required=""#}
+{#                                   value="{{ reserve_info.territory_of_use }}">#}
+{#                        </p>#}
+
+                        <button type="submit" class="btn btn-success btn-car-agreement">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <style>
+        p,
+        label {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input {
+            margin: .4rem;
+        }
+
+    </style>
+    <script>
+
+        Array.prototype.remove = function () {
+            let what, a = arguments, L = a.length, ax;
+            while (L && this.length) {
+                what = a[--L];
+                while ((ax = this.indexOf(what)) !== -1) {
+                    this.splice(ax, 1);
+                }
+            }
+            return this;
+        };
+
+        let summ = document.querySelector(".summ");
+        let select = document.querySelector("#id_service");
+        let total = document.querySelector("#id_total");
+        let arr = [];
+        let selectItem = document.querySelectorAll(".select-items");
+
+        console.log(summ);
+
+        let sum = 0;
+        total.addEventListener("input", function () {
+            sum = +total.value;
+            for (let i = 0; i < arr.length; i++) {
+                sum = sum + +arr[i].getAttribute("price");
+            }
+            summ.value = sum;
+            console.log(sum);
+        });
+
+
+        selectItem.forEach(item => item.addEventListener("click", function () {
+                for (let b = 0; b < selectItem.length; b++) {
+                    if (!arr.includes(selectItem[b]) && selectItem[b].checked == true) {
+                        arr.push(selectItem[b]);
+                    } else if (selectItem[b].checked == false) {
+                        arr.remove(selectItem[b]);
+                    }
+                }
+                sum = +total.value;
+                for (let i = 0; i < arr.length; i++) {
+                    sum = sum + +arr[i].getAttribute("price");
+                }
+                summ.value = sum;
+
+            })
+        );
+    </script>
+{% endblock %}

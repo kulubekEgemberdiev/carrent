@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Контакты |{% endblock %}
+{% else %}
+    {% block title %}Contacts |{% endblock %}
+{% endif %}
+{% block content %}
+    <!--=================================
+ inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Контакты' %}</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i>{% trans 'Главная' %}</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>{% trans 'Контакты' %} </span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+     contact -->
+
+    <section class="contact-2 page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 justify-content-center">
+                    <div class="section-title">
+                        <span>{% trans 'Мы хотели бы услышать от вас' %}</span>
+                        <h2>{% trans 'Оставьте отзыв!' %}</h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-sm-12 mb-lg-0 mb-1">
+                    <div class="gray-form row">
+                        <div class="col-md-12">
+                            <div id="formmessage">Success/Error Message Goes Here</div>
+                            <form class="form-horizontal" id="contactform" role="form" action="{% url 'home_send_email' %}">
+                            {% csrf_token %}
+                                <p>{% blocktrans %}Было бы здорово услышать от вас! Если у вас есть какие-либо вопросы, пожалуйста, не
+                                    стесняйтесь, отправьте нам сообщение. Мы ждем с нетерпением вестей от Вас! Мы
+                                    ответим в течение 24 часов!{% endblocktrans %}</p>
+                                <div class="contact-form">
+                                    <div class="form-group">
+                                        <input id="name" type="text" placeholder="{% trans 'Имя*' %}" class="form-control"
+                                               name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Email*" class="form-control" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="{% trans 'Телефон*' %}" class="form-control" name="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control input-message" placeholder="{% trans 'Отзыв*' %}" rows="7"
+                                                  name="message"></textarea>
+                                    </div>
+                                    <input type="hidden" name="action" value="sendEmail"/>
+                                    <button id="submit" name="submit" type="submit" value="Send" class="button red">
+                                        {% trans 'Отправить' %}
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="ajaxloader" style="display:none"><img class="center-block"
+                                                                           src="images/ajax-loader.gif" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="feature-box-3">
+                        <div class="icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="content">
+                            <h5>{% trans 'Телефон' %}</h5>
+                            <p>{{contact.0.phone}}</p>
+                        </div>
+                    </div>
+                    <div class="feature-box-3">
+                        <div class="icon">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Email</h5>
+                            <p> {{contact.0.email}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     contact -->
+
+{% endblock %}

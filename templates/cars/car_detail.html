@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Автомобиль {{ object.title }} |{% endblock %}
+{% else %}
+    {% block title %}Car {{ object.title }} |{% endblock %}
+{% endif %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{{ object.title }} ({% if LANGUAGE_CODE == 'ru' %}
+                        {{ object.car_color_rus }}{% else %}{{ object.car_color }}{% endif %})</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i>{% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'cars_list' %}">{% trans 'Автомобили' %}</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><span>{{ object.title }} ({% if LANGUAGE_CODE == 'ru' %}{{ object.car_color_rus }}{% else %}
+                            {{ object.car_color }}{% endif %})</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+    car-details  -->
+
+    <section class="car-details page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3>{{ object.title }} ({% if LANGUAGE_CODE == 'ru' %}{{ object.car_color_rus }}{% else %}
+                        {{ object.car_color }}{% endif %})</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="details-nav">
+
+                        <script type="text/javascript">(function (w, doc) {
+                            if (!w.__utlWdgt) {
+                                w.__utlWdgt = true;
+                                var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+                                s.type = 'text/javascript';
+                                s.charset = 'UTF-8';
+                                s.async = true;
+                                s.src = ('https:' == w.location.protocol ? 'https' : 'http') + '://w.uptolike.com/widgets/v1/uptolike.js';
+                                var h = d[g]('body')[0];
+                                h.appendChild(s);
+                            }
+                        })(window, document);
+                        </script>
+                        <div data-mobile-view="true" data-share-size="30" data-like-text-enable="false"
+                             data-background-alpha="0.0" data-pid="1874305" data-mode="share"
+                             data-background-color="#ffffff" data-hover-effect="rotate-cw" data-share-shape="round"
+                             data-share-counter-size="12" data-icon-color="#ffffff"
+                             data-mobile-sn-ids="fb.vk.tw.ok.wh.tm.vb." data-text-color="#000000"
+                             data-buttons-color="#ffffff" data-counter-background-color="#ffffff"
+                             data-share-counter-type="disable" data-orientation="horizontal"
+                             data-following-enable="false" data-sn-ids="fb.vk.tw.ok.wh.tm.vb."
+                             data-preview-mobile="false" data-selection-enable="false" data-exclude-show-more="true"
+                             data-share-style="1" data-counter-background-alpha="1.0" data-top-button="false"
+                             class="uptolike-buttons"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="slider-slick">
+                        <div class="slider slider-for detail-big-car-gallery">
+                            <img class="img-fluid" src="{{ object.image1.url }}" alt="">
+                            {% if object.image2 %}
+                                <img class="img-fluid" src="{{ object.image2.url }} " alt="">{% endif %}
+                            {% if object.image3 %}
+                                <img class="img-fluid" src="{{ object.image3.url }} " alt="">{% endif %}
+                            {% if object.image4 %}
+                                <img class="img-fluid" src="{{ object.image4.url }} " alt="">{% endif %}
+                            {% if object.image5 %}
+                                <img class="img-fluid" src="{{ object.image5.url }} " alt="">{% endif %}
+                        </div>
+                        <div class="slider slider-nav slider-under">
+                            <img class="img-fluid slider-img-sml" src="{{ object.image1.url }}" alt="">
+                            {% if object.image2 %}
+                                <img class="img-fluid slider-img-sml" src="{{ object.image2.url }} " alt="">{% endif %}
+                            {% if object.image3 %}
+                                <img class="img-fluid slider-img-sml" src="{{ object.image3.url }} " alt="">{% endif %}
+                            {% if object.image4 %}
+                                <img class="img-fluid slider-img-sml" src="{{ object.image4.url }} " alt="">{% endif %}
+                            {% if object.image5 %}
+                                <img class="img-fluid slider-img-sml" src="{{ object.image5.url }} " alt="">{% endif %}
+                        </div>
+                    </div>
+                    <div id="tabs" class="tabs-desktop">
+                        <div id="tab1" class="tabcontent">
+                            <h6>{% trans 'Описание' %}</h6>
+                            <p>{% if LANGUAGE_CODE == 'ru' %}{{ object.description_rus }}{% else %}
+                                {{ object.description }}{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="extra-feature extra-feature-desktop">
+                        <h6> {% trans 'Дополнительные функции' %}</h6>
+                        <div class="feature-main">
+                            {% for functi in object.function_car.all %}
+                                <div class="feature-of-car fa fa-check">{% if LANGUAGE_CODE == 'ru' %}{{ functi.title_rus }}{% else %}{{ functi.title }}{% endif %}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p class="color-black bold rent-title">{% trans 'Стоимость Аренды' %}:</p>
+                    <table class="rent-table" style="margin-bottom: 21px">
+                        <tr class="rent-car-title">
+                            <td class="pad-bot-10 rent-day">{% trans 'Количество суток' %}</td>
+                            <td class="pad-bot-10 rent-cost">{% trans 'Цена (сом)' %}</td>
+                        </tr>
+                        <tr class="rent-car-title">
+                            <td class="pad-bot-10 days">1-2</td>
+                            <td class="pad-bot-10 cost">{{ object.price_1_2 }}</td>
+                        </tr>
+                        <tr class="rent-car-title">
+                            <td class="pad-bot-10 days">3-7</td>
+                            <td class="pad-bot-10 cost">{{ object.price_3_7 }}</td>
+                        </tr>
+                        <tr class="rent-car-title">
+                            <td class="pad-bot-10 days">8-20</td>
+                            <td class="pad-bot-10 cost">{{ object.price_8_20 }}</td>
+                        </tr>
+                        <tr class="rent-car-title">
+                            <td class="pad-bot-10 days">20+</td>
+                            <td class="pad-bot-10 cost">{{ object.price_20 }}</td>
+                        </tr>
+                    </table>
+                    <div class="car-details-sidebar">
+                        <div class="details-block details-weight">
+                            <h5>{% trans 'Тех. характеристики' %}:</h5>
+                            <ul>
+                                <li><span>{% trans 'Год выпуска' %}</span> <strong
+                                        class="text-right">{{ object.year }}</strong></li>
+                                <li><span>{% trans 'Объем двигателя' %}</span> <strong
+                                        class="text-right">{{ object.engine_cap }}</strong></li>
+                                <li><span>{% trans 'Коробка передач' %}</span> <strong class="text-right">
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        {% if object.gear_box == 'Механика' %}
+                                            Mechanics
+                                        {% elif object.gear_box == 'Вариатор' %}
+                                            Variator
+                                        {% elif object.gear_box == 'Автомат' %}
+                                            Automatic
+                                        {% endif %}
+                                    {% else %}
+                                        {{ object.gear_box }}
+                                    {% endif %}
+                                </strong></li>
+                                <li><span>{% trans 'Мощность двигателя' %}</span> <strong
+                                        class="text-right">{{ object.engine_pow }}</strong></li>
+                                <li><span>{% trans 'Тип топлива' %}</span> <strong
+                                        class="text-right">{{ object.fuel_type }}</strong></li>
+                                <li><span>{% trans 'Кузов' %}</span> <strong
+                                        class="text-right">
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        {% if object.car_body == 'Хетчбек' %}
+                                            Hatchback
+                                        {% elif object.car_body == 'Кроссовер' %}
+                                            Crossover
+                                        {% elif object.car_body == 'Седан' %}
+                                            Sedan
+                                        {% endif %}
+                                    {% else %}
+                                        {{ object.car_body }}
+                                    {% endif %}
+                                </strong></li>
+                                <li><span>{% trans 'Привод' %}</span> <strong
+                                        class="text-right">
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        {% if object.wd == 'Полный' %}
+                                            AWD
+                                        {% elif object.wd == 'Передний' %}
+                                            Front Wheel Drive
+                                        {% elif object.wd == 'Задний' %}
+                                            Rear Wheel Drive
+                                        {% endif %}
+                                    {% else %}
+                                        {{ object.wd }}
+                                    {% endif %}
+                                </strong></li>
+                                <li><span>{% trans 'Потребление топлива' %}</span> <strong
+                                        class="text-right">{{ object.mileage }}</strong></li>
+                            </ul>
+                        </div>
+                        <div class="details-phone details-weight">
+                            <div class="feature-box-3 order-car-content-main">
+                                <div class="content order-car-content">
+                                    <a href="#"
+                                       class="order-button order-button-price-list order-btn-car">{% trans 'Заказать' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="tabs" class="tabs-mobile">
+                        <div id="tab1" class="tabcontent">
+                            <h6>{% trans 'Описание' %}</h6>
+                            <p>{% if LANGUAGE_CODE == 'ru' %}{{ object.description_rus }}{% else %}
+                                {{ object.description }}{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="extra-feature extra-feature-mobile">
+                        <h6> {% trans 'Дополнительные функции' %}</h6>
+                        <div class="feature-main">
+                            {% for functi in object.function_car.all %}
+                                <div class="feature-of-car fa fa-check">{% if LANGUAGE_CODE == 'ru' %}{{ functi.title_rus }}{% else %}{{ functi.title }}{% endif %}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+    car-details -->
+
+{% endblock %}

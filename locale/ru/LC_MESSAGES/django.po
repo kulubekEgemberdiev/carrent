@@ -1,0 +1,784 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-21 16:36+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: templates/base.html:106 templates/manager_base.html:124
+msgid "Работаем"
+msgstr ""
+
+#: templates/base.html:107
+msgid "г. Бишкек"
+msgstr ""
+
+#: templates/base.html:169 templates/base.html:241
+#: templates/cars/car_detail.html:23 templates/cars/cars_list.html:36
+#: templates/cars/class_b.html:19 templates/cars/class_c.html:19
+#: templates/cars/class_e.html:19 templates/cars/class_j.html:19
+#: templates/manager_base.html:188 templates/pages/conditions.html:22
+#: templates/pages/contact.html:21 templates/pages/price.html:25
+#: templates/pages/service.html:24
+msgid "Главная"
+msgstr ""
+
+#: templates/base.html:171 templates/base.html:243
+#: templates/cars/car_detail.html:25 templates/cars/cars_list.html:32
+#: templates/cars/cars_list.html:39 templates/home.html:335
+#: templates/manager_base.html:190
+msgid "Автомобили"
+msgstr ""
+
+#: templates/base.html:173 templates/base.html:245
+#: templates/manager_base.html:192 templates/pages/conditions.html:18
+#: templates/pages/conditions.html:24
+msgid "Условия проката"
+msgstr ""
+
+#: templates/base.html:176 templates/base.html:246
+#: templates/manager_base.html:195 templates/pages/price.html:21
+msgid "Тарифы"
+msgstr ""
+
+#: templates/base.html:179 templates/base.html:258
+#: templates/manager_base.html:198 templates/pages/service.html:20
+#: templates/pages/service.html:27
+msgid "Услуги"
+msgstr ""
+
+#: templates/base.html:182 templates/base.html:260
+#: templates/manager_base.html:201 templates/pages/contact.html:17
+#: templates/pages/contact.html:23
+msgid "Контакты"
+msgstr ""
+
+#: templates/base.html:186 templates/manager_base.html:205
+msgid "Админ панель"
+msgstr ""
+
+#: templates/base.html:224
+msgid ""
+"Автомобиль значительно экономит время на перемещения по городу, позволяя\n"
+"                        добраться в пункт\n"
+"                        назначения быстрее, чем на общественном транспорте. "
+"Такое средство передвижения дает комфорт и\n"
+"                        уверенность."
+msgstr ""
+
+#: templates/base.html:239
+msgid "Ссылки"
+msgstr ""
+
+#: templates/base.html:249
+msgid "Выход"
+msgstr ""
+
+#: templates/base.html:263 templates/pages/price.html:55
+msgid "Эконом (класс B)"
+msgstr ""
+
+#: templates/base.html:265 templates/pages/price.html:98
+msgid "Средний (класс C)"
+msgstr ""
+
+#: templates/base.html:267 templates/pages/price.html:139
+msgid "Бизнес (класс E)"
+msgstr ""
+
+#: templates/base.html:269 templates/pages/price.html:180
+msgid "Кроссовер (класс J)"
+msgstr ""
+
+#: templates/base.html:331 templates/cars/cars_list.html:161
+msgid "Экспресс заявка"
+msgstr ""
+
+#: templates/base.html:332
+msgid ""
+"Заполните экспресс заявку и наши менеджеры свяжутся с вами для заполнения\n"
+"                    заявки по\n"
+"                    телефону."
+msgstr ""
+
+#: templates/base.html:339 templates/cars/cars_list.html:169
+#: templates/home.html:578
+msgid "Имя"
+msgstr ""
+
+#: templates/base.html:341 templates/cars/cars_list.html:172
+#: templates/home.html:580 templates/pages/contact.html:90
+msgid "Телефон"
+msgstr ""
+
+#: templates/base.html:345 templates/cars/cars_list.html:176
+msgid "Модель транспортного средства"
+msgstr ""
+
+#: templates/base.html:356 templates/cars/cars_list.html:187
+msgid "Дата начала аренды"
+msgstr ""
+
+#: templates/base.html:362 templates/cars/cars_list.html:193
+msgid "Дата окончания аренды"
+msgstr ""
+
+#: templates/base.html:372 templates/cars/cars_list.html:203
+msgid "Я согласен на обработку персональных данных"
+msgstr ""
+
+#: templates/base.html:375 templates/cars/cars_list.html:206
+msgid "ОТПРАВИТЬ"
+msgstr ""
+
+#: templates/cars/car_detail.html:109 templates/cars/car_detail.html:218
+msgid "Описание"
+msgstr ""
+
+#: templates/cars/car_detail.html:116 templates/cars/car_detail.html:225
+msgid "Дополнительные функции"
+msgstr ""
+
+#: templates/cars/car_detail.html:125
+msgid "Стоимость Аренды"
+msgstr ""
+
+#: templates/cars/car_detail.html:128
+msgid "Количество суток"
+msgstr ""
+
+#: templates/cars/car_detail.html:129
+msgid "Цена (сом)"
+msgstr ""
+
+#: templates/cars/car_detail.html:150
+msgid "Тех. характеристики"
+msgstr ""
+
+#: templates/cars/car_detail.html:152 templates/pages/price.html:64
+#: templates/pages/price.html:107 templates/pages/price.html:148
+#: templates/pages/price.html:189
+msgid "Год выпуска"
+msgstr ""
+
+#: templates/cars/car_detail.html:154
+msgid "Объем двигателя"
+msgstr ""
+
+#: templates/cars/car_detail.html:156
+msgid "Коробка передач"
+msgstr ""
+
+#: templates/cars/car_detail.html:169
+msgid "Мощность двигателя"
+msgstr ""
+
+#: templates/cars/car_detail.html:171
+msgid "Тип топлива"
+msgstr ""
+
+#: templates/cars/car_detail.html:173
+msgid "Кузов"
+msgstr ""
+
+#: templates/cars/car_detail.html:187
+msgid "Привод"
+msgstr ""
+
+#: templates/cars/car_detail.html:201
+msgid "Потребление топлива"
+msgstr ""
+
+#: templates/cars/car_detail.html:209 templates/cars/cars_list.html:139
+#: templates/home.html:478 templates/pages/price.html:85
+#: templates/pages/price.html:127 templates/pages/price.html:168
+#: templates/pages/price.html:209
+msgid "Заказать"
+msgstr ""
+
+#: templates/cars/cars_list.html:58
+msgid "Все"
+msgstr ""
+
+#: templates/cars/cars_list.html:61 templates/cars/cars_list.html:121
+#: templates/cars/class_b.html:75 templates/cars/class_c.html:76
+#: templates/cars/class_e.html:76 templates/cars/class_j.html:76
+#: templates/home.html:348 templates/home.html:460
+msgid "Эконом"
+msgstr ""
+
+#: templates/cars/cars_list.html:63 templates/cars/cars_list.html:124
+#: templates/cars/class_b.html:78 templates/cars/class_c.html:79
+#: templates/cars/class_e.html:79 templates/cars/class_j.html:79
+#: templates/home.html:360 templates/home.html:463
+msgid "Средний"
+msgstr ""
+
+#: templates/cars/cars_list.html:66 templates/cars/cars_list.html:127
+#: templates/cars/class_b.html:81 templates/cars/class_c.html:82
+#: templates/cars/class_e.html:82 templates/cars/class_j.html:82
+#: templates/home.html:372 templates/home.html:466
+msgid "Бизнес"
+msgstr ""
+
+#: templates/cars/cars_list.html:68 templates/cars/cars_list.html:130
+#: templates/cars/class_b.html:84 templates/cars/class_c.html:85
+#: templates/cars/class_e.html:85 templates/cars/class_j.html:85
+#: templates/home.html:384 templates/home.html:469
+msgid "Кроссовер"
+msgstr ""
+
+#: templates/cars/cars_list.html:113 templates/cars/class_b.html:68
+#: templates/cars/class_c.html:68 templates/cars/class_e.html:68
+#: templates/cars/class_j.html:68 templates/home.html:452
+msgid "куб"
+msgstr ""
+
+#: templates/cars/cars_list.html:136 templates/cars/class_b.html:90
+#: templates/cars/class_c.html:91 templates/cars/class_e.html:91
+#: templates/cars/class_j.html:91 templates/home.html:475
+msgid "от"
+msgstr ""
+
+#: templates/cars/cars_list.html:136 templates/cars/class_b.html:90
+#: templates/cars/class_c.html:91 templates/cars/class_e.html:91
+#: templates/cars/class_j.html:91 templates/home.html:475
+msgid "сом/сут"
+msgstr ""
+
+#: templates/cars/cars_list.html:162
+msgid ""
+"Заполните экспресс заявку и наши менеджеры свяжутся с вами для заполнения\n"
+"                        заявки по\n"
+"                        телефону."
+msgstr ""
+
+#: templates/cars/class_b.html:15 templates/cars/class_b.html:22
+#: templates/cars/class_b.html:102
+msgid "Эконом класс"
+msgstr ""
+
+#: templates/cars/class_b.html:103
+msgid ""
+"Бюджетные авто пользуются неизменным спросом на протяжении многих лет. Ведь\n"
+"                            они дают\n"
+"                            возможность\n"
+"                            перемещаться по городу и совершать загородные "
+"поездки без лишних\n"
+"                            затрат."
+msgstr ""
+
+#: templates/cars/class_b.html:108
+msgid ""
+"Если вы планируете покупку машины, но пока не определились с выбором,\n"
+"                            заказывайте в "
+msgstr ""
+
+#: templates/cars/class_b.html:110
+msgid "аренду авто"
+msgstr ""
+
+#: templates/cars/class_b.html:111
+msgid ""
+"эконом-класса и совершайте пробные поездки. Такой тест-драйв обойдется "
+"совсем\n"
+"                            недорого и\n"
+"                            позволит принять верное решение."
+msgstr ""
+
+#: templates/cars/class_b.html:114
+msgid ""
+"Машины этого класса обладают целым рядом преимуществ – они довольно\n"
+"                            маневренны, мобильны,\n"
+"                            экономно\n"
+"                            расходуют топливо. К минусам можно отнести "
+"отсутствие оригинального дизайна и недостаточные\n"
+"                            показатели комфортности. Поэтому в случае "
+"торжественных событий (например, свадьба), лучше\n"
+"                            отдать\n"
+"                            предпочтение премиальным моделям."
+msgstr ""
+
+#: templates/cars/class_b.html:121
+msgid ""
+"Кузов малогабаритной машины чаще всего представляет собой 3 или 5-дверный\n"
+"                            хэтчбек. Также есть\n"
+"                            варианты с седанами и кузовами универсал."
+msgstr ""
+
+#: templates/cars/class_b.html:124
+msgid ""
+"Ширина малогабаритных авто не превышает 1,7 м. А их средняя длина "
+"колеблется\n"
+"                            в пределах от\n"
+"                            3,9 до 4,2\n"
+"                            м. Вместимость салона ограничена – автомобили "
+"эконом-класса рассчитаны на перевозку 4-5\n"
+"                            пассажиров.\n"
+"                            При этом стоит учесть, что 3 взрослых человека, "
+"с трудом уместившись на заднем сиденье,\n"
+"                            будут\n"
+"                            чувствовать себя не слишком комфортно."
+msgstr ""
+
+#: templates/cars/class_c.html:15 templates/cars/class_c.html:22
+#: templates/cars/class_c.html:103
+msgid "Средний класс"
+msgstr ""
+
+#: templates/cars/class_c.html:104
+msgid ""
+"У данного класса автомобилей есть и другие наименования: компакт-класс,\n"
+"                            гольф-класс. Второе название объясняется тем, "
+"что долгое время лидерство в этом сегменте\n"
+"                            автомобильного рынка удерживала популярная "
+"немецкая модель Volkswagen\n"
+"                            Golf."
+msgstr ""
+
+#: templates/cars/class_c.html:108
+msgid ""
+"Преимущества машин среднего класса очевидны. Они отличаются высокой\n"
+"                            маневренностью, очень удобны в управлении, "
+"комфортабельны, имеют стильный оригинальный\n"
+"                            дизайн. Такие машины одинаково хорошо подходят и "
+"для загородных путешествий, и для\n"
+"                            регулярных поездок по загруженным городским "
+"маршрутам. Просторный салон оборудован\n"
+"                            мультимедийной системой и кондиционером. Имеется "
+"система АБС и другие полезные функции.\n"
+"                            Объемный багажник с легкостью вмещает всю "
+"дорожную кладь."
+msgstr ""
+
+#: templates/cars/class_c.html:114
+msgid ""
+"По утверждению изготовителей машины среднего класса рассчитаны на перевозку "
+"5\n"
+"                            пассажиров. Но чтобы поездка была максимально "
+"комфортной, лучше брать авто напрокат для\n"
+"                            небольших компаний – до 4 человек."
+msgstr ""
+
+#: templates/cars/class_e.html:15 templates/cars/class_e.html:22
+#: templates/cars/class_e.html:103
+msgid "Бизнес класс"
+msgstr ""
+
+#: templates/cars/class_e.html:104
+msgid ""
+"К этому классу авто по традиции относят седаны и универсалы. Они рассчитаны\n"
+"                            на деловых людей, обладающих определенным "
+"статусом в обществе. Аренда машин такого уровня –\n"
+"                            отличный выход для бизнесменов и знаменитостей, "
+"которые ненадолго приезжают в город.\n"
+"                            Направляясь на важную встречу, деловые "
+"переговоры или мероприятие, человек может\n"
+"                            расслабиться и отдохнуть в комфортабельном "
+"салоне. Или в случае необходимости спокойно\n"
+"                            поработать за ноутбуком."
+msgstr ""
+
+#: templates/cars/class_e.html:110
+msgid ""
+"Наша компания предлагает услуги по аренде авто повышенной комфортабельности\n"
+"                            представительского класса. Заказ могут оформить "
+"водители в возрасте от 23 лет, имеющие опыт\n"
+"                            вождения не менее 3 лет. Все машины имеют мощный "
+"двигатель, просторный салон, отличаются\n"
+"                            солидными габаритами и премиальным внешним видом."
+msgstr ""
+
+#: templates/cars/class_e.html:114
+msgid ""
+"Такие авто пользуются повышенным спросом у преуспевающих людей, которые\n"
+"                            привыкли к качественным дорогим вещами и всегда "
+"поддерживают свой имидж на высоком\n"
+"                            уровне."
+msgstr ""
+
+#: templates/cars/class_j.html:15 templates/cars/class_j.html:22
+#: templates/cars/class_j.html:103
+msgid "Кроссовер класс"
+msgstr ""
+
+#: templates/cars/class_j.html:104
+msgid ""
+"Если вы активный человек, и не можете представить свою жизнь без движения,\n"
+"                            кроссовер – это ваше авто."
+msgstr ""
+
+#: templates/cars/class_j.html:106
+msgid ""
+"Машины класса J отличаются повышенной проходимостью и прекрасно подходят "
+"для\n"
+"                            поездок по пересеченной местности. Благодаря "
+"хорошей маневренности на них удобно\n"
+"                            перемещаться и по оживленным дорогам."
+msgstr ""
+
+#: templates/cars/class_j.html:109
+msgid ""
+"Взяв на прокат автомобиль, вы можете совершить поездку по городу, "
+"отправиться\n"
+"                            к друзьям в другой населенный пункт и выбраться "
+"вместе на веселый пикник. Машина оснащена\n"
+"                            современным оборудованием, поэтому путешествие "
+"будет комфортным и безопасным. А в просторном\n"
+"                            салоне с удобством разместится целая компания."
+msgstr ""
+
+#: templates/cars/class_j.html:113
+msgid ""
+"Возможно, именно сейчас вы думаете о приобретении нового авто, и пока еще "
+"не\n"
+"                            сделали окончательный выбор. Возьмите в аренду "
+"кроссовер и проведите тест-драйв. Находясь за\n"
+"                            рулем в течение нескольких дней, вы сможете "
+"оценить все преимущества машины,\n"
+"                            проанализировать ее характеристики, и, наконец-"
+"то, принять взвешенное\n"
+"                            решение."
+msgstr ""
+
+#: templates/cars/class_j.html:118
+msgid ""
+"Оформить аренду авто в Бишкеке так же просто, как вызвать такси. Поэтому\n"
+"                            воспользоваться услугой проката кросовера вы "
+"сможете в любое удобное время. Обращайтесь в\n"
+"                            наш центр проката и подбирайте машину с учетом "
+"всех своих пожеланий."
+msgstr ""
+
+#: templates/home.html:55
+msgid "Добро пожаловать на сайт City Rent"
+msgstr ""
+
+#: templates/home.html:78
+msgid "Выберите себе машину"
+msgstr ""
+
+#: templates/home.html:101 templates/home.html:256
+msgid "Подробнее"
+msgstr ""
+
+#: templates/home.html:209
+msgid "Добро пожаловать на City Rent"
+msgstr ""
+
+#: templates/home.html:232
+msgid "Выберите машину"
+msgstr ""
+
+#: templates/home.html:334
+msgid "Добро пожаловать в City Rent"
+msgstr ""
+
+#: templates/home.html:394
+msgid "Остались вопросы"
+msgstr ""
+
+#: templates/home.html:414
+msgid "Выбери себе машину"
+msgstr ""
+
+#: templates/home.html:415
+msgid "Наши машины"
+msgstr ""
+
+#: templates/home.html:508
+msgid "Простая аренда"
+msgstr ""
+
+#: templates/home.html:509
+msgid "Оформите заявку прямо на сайте"
+msgstr ""
+
+#: templates/home.html:517
+msgid "Безопасные автомобили"
+msgstr ""
+
+#: templates/home.html:518
+msgid ""
+"Новые застрахованные автомобили, своевременное\n"
+"                                        прохождение ТО,\n"
+"                                        защита двигателя у всех автомобилей"
+msgstr ""
+
+#: templates/home.html:530
+msgid "Мы находимся в разных регионах"
+msgstr ""
+
+#: templates/home.html:531
+msgid "Возврат автомобиля в любом нашем филиале"
+msgstr ""
+
+#: templates/home.html:539
+msgid "Сигнализация"
+msgstr ""
+
+#: templates/home.html:540
+msgid "У всех автомобилей"
+msgstr ""
+
+#: templates/home.html:564
+msgid "Остались вопросы?"
+msgstr ""
+
+#: templates/home.html:565
+msgid "Наш менеджер перезвонит вам в течении дня"
+msgstr ""
+
+#: templates/home.html:582 templates/pages/contact.html:75
+msgid "Отправить"
+msgstr ""
+
+#: templates/pages/conditions.html:43
+msgid "Необходимые документы"
+msgstr ""
+
+#: templates/pages/conditions.html:55
+msgid "Если Вы гражданин КР"
+msgstr ""
+
+#: templates/pages/conditions.html:56
+msgid "то Вам нужно будет предоставить паспорт и водительское удостоверение"
+msgstr ""
+
+#: templates/pages/conditions.html:66
+msgid "Если Вы не гражданин КР"
+msgstr ""
+
+#: templates/pages/conditions.html:67
+msgid ""
+"то Вам нужно будет предоставить паспорт, въездную визу или миграционную "
+"карту и\n"
+"                                водительское удостоверение международного "
+"образца"
+msgstr ""
+
+#: templates/pages/conditions.html:76
+msgid "Требования к арендатору"
+msgstr ""
+
+#: templates/pages/conditions.html:88
+msgid "Возраст арендатора от 23 лет"
+msgstr ""
+
+#: templates/pages/conditions.html:98
+msgid "Стаж вождения от 3-х лет"
+msgstr ""
+
+#: templates/pages/conditions.html:106
+msgid "Условия оплаты"
+msgstr ""
+
+#: templates/pages/conditions.html:110
+#, python-format
+msgid ""
+"100%% предоплата всей стоимости проката транспортного средства. Оплатить "
+"можно любым\n"
+"                                удобным для Вас способом: наличными, "
+"банковской дебетовой или кредитной картой, через\n"
+"                                сайт, банковским переводом."
+msgstr ""
+
+#: templates/pages/conditions.html:114
+msgid ""
+"Залоговый депозит для граждан Кыргызстана составляет 3 000 - 5 000 сом, для "
+"граждан\n"
+"                                других государств – 10 000 сом. Если Вы "
+"соблюдаете условия аренды автомобиля,\n"
+"                                прописанные в договоре, залог возвращается."
+msgstr ""
+
+#: templates/pages/conditions.html:118
+msgid ""
+"Если Вы вернете автомобиль раньше, мы пересчитаем стоимость аренды и вернем "
+"разницу."
+msgstr ""
+
+#: templates/pages/conditions.html:120
+msgid ""
+"Если Вы задержите возврат автомобиля больше чем на час, нужно будет оплатить "
+"следующие\n"
+"                                сутки проката."
+msgstr ""
+
+#: templates/pages/conditions.html:127
+msgid "Дополнительные условия"
+msgstr ""
+
+#: templates/pages/conditions.html:131
+msgid ""
+"Минимальная продолжительность аренды – 1 сутки (24 часа) с момента "
+"получения\n"
+"                                автомобиля."
+msgstr ""
+
+#: templates/pages/conditions.html:134
+msgid ""
+"Мы выдадим и примем у Вас автомобиль в любое время и по любому адресу по "
+"предварительной\n"
+"                                договоренности. Стоимость доставки/возврата "
+"в черте города от 400 сом."
+msgstr ""
+
+#: templates/pages/conditions.html:137
+msgid ""
+"Когда мы отдаем Вам автомобиль он чистый и с полным баком. Просим вернуть "
+"его также\n"
+"                                чистым и заправленным. Если автомобиль "
+"возвращается грязным и/или не заправленным, Вам\n"
+"                                нужно будет оплатить компенсацию из расчета: "
+"400 - 700 сом. за мойку в зависимости от\n"
+"                                автомобиля и степени загрязнения, и заправку "
+"из расчета 50 сом/литр топлива;"
+msgstr ""
+
+#: templates/pages/conditions.html:142
+msgid ""
+"На прокатном автомобиле запрещено выезжать за пределы Кыргызстана. Если Вам "
+"нужно\n"
+"                                выехать из города / области – предупредите "
+"нас об этом при оформлении договора."
+msgstr ""
+
+#: templates/pages/conditions.html:145
+msgid ""
+"Если за руль арендованного ТС сядет дополнительный водитель, он должен быть "
+"записан в\n"
+"                                договор. Требования по возрасту, стажу, "
+"необходимым документам сохраняются."
+msgstr ""
+
+#: templates/pages/conditions.html:148
+msgid "Ограничение пробега для автомобиля - 300 км в сутки."
+msgstr ""
+
+#: templates/pages/conditions.html:149
+msgid ""
+"Считаем суммарно за весь период аренды. При превышении лимита – оплата по 5 "
+"сом за\n"
+"                                каждый километр свыше."
+msgstr ""
+
+#: templates/pages/conditions.html:152
+msgid ""
+"Арендодатель может отказать в выдаче автомобиля без объяснения причины, о "
+"чем уведомляет\n"
+"                                клиента не менее чем за 2 часа до "
+"предполагаемой выдачи."
+msgstr ""
+
+#: templates/pages/conditions.html:155
+msgid "Курить в автомобиле запрещено!"
+msgstr ""
+
+#: templates/pages/conditions.html:156
+msgid ""
+"При ДТП и любом причинении ущерба автомобилю первым делом известите нас, мы "
+"расскажем,\n"
+"                                как действовать в сложившейся ситуации. Если "
+"ДТП произошло не по Вашей вине, и\n"
+"                                предоставлены все справки с места ДТП – "
+"сумма ответственности равна нулю."
+msgstr ""
+
+#: templates/pages/conditions.html:160
+msgid "За повреждение шин - полная материальная ответственность."
+msgstr ""
+
+#: templates/pages/contact.html:42
+msgid "Мы хотели бы услышать от вас"
+msgstr ""
+
+#: templates/pages/contact.html:43
+msgid "Оставьте отзыв!"
+msgstr ""
+
+#: templates/pages/contact.html:55
+msgid ""
+"Было бы здорово услышать от вас! Если у вас есть какие-либо вопросы, "
+"пожалуйста, не\n"
+"                                    стесняйтесь, отправьте нам сообщение. Мы "
+"ждем с нетерпением вестей от Вас! Мы\n"
+"                                    ответим в течение 24 часов!"
+msgstr ""
+
+#: templates/pages/contact.html:60
+msgid "Имя*"
+msgstr ""
+
+#: templates/pages/contact.html:67
+msgid "Телефон*"
+msgstr ""
+
+#: templates/pages/contact.html:70
+msgid "Отзыв*"
+msgstr ""
+
+#: templates/pages/error-404.html:75
+msgid "Оооййй"
+msgstr ""
+
+#: templates/pages/error-404.html:76
+msgid "Страница, которую вы искали, не была найдена"
+msgstr ""
+
+#: templates/pages/error-404.html:77
+msgid ""
+"Не можете найти то, что ищите? Найдите минутку и сделайте поиск ниже или "
+"начните с "
+msgstr ""
+
+#: templates/pages/error-404.html:78
+msgid "Главной страницы"
+msgstr ""
+
+#: templates/pages/price.html:28
+msgid "Цены на машины"
+msgstr ""
+
+#: templates/pages/price.html:47
+msgid "Стоимость проката автомобилей в Бишкеке"
+msgstr ""
+
+#: templates/pages/price.html:63 templates/pages/price.html:106
+#: templates/pages/price.html:147 templates/pages/price.html:188
+msgid "Автомобиль"
+msgstr ""
+
+#: templates/pages/price.html:65 templates/pages/price.html:66
+#: templates/pages/price.html:67 templates/pages/price.html:108
+#: templates/pages/price.html:109 templates/pages/price.html:110
+#: templates/pages/price.html:149 templates/pages/price.html:150
+#: templates/pages/price.html:151 templates/pages/price.html:190
+#: templates/pages/price.html:191 templates/pages/price.html:192
+msgid "cут"
+msgstr ""
+
+#: templates/pages/price.html:68 templates/pages/price.html:111
+#: templates/pages/price.html:152 templates/pages/price.html:193
+msgid "Более 20 cут"
+msgstr ""
+
+#: templates/pages/price.html:69 templates/pages/price.html:112
+#: templates/pages/price.html:153 templates/pages/price.html:194
+msgid "Залог"
+msgstr ""

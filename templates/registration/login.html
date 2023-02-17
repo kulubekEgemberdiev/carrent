@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Авторизаця </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><span>Авторизаця</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+     login-form  -->
+
+    <section class="login-form page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Авторизация</h2>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="gray-form clearfix">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_username">Имя пользователя:</label>
+                                <input type="text" name="username" autofocus="" autocapitalize="none"
+                                       autocomplete="username" maxlength="150" required="" id="id_username"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Пароль:</label>
+                                <input type="password" name="password" autocomplete="current-password" required=""
+                                       id="id_password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <div class="remember-checkbox mb-4">
+                                    <input type="checkbox" name="one" id="one">
+                                </div>
+                            </div>
+                            <button href="#" class="button red"> Log in </button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     login-form  -->
+{% endblock %}

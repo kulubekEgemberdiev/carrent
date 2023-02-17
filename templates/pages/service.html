@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block description %}
+Аренда авто Бишкек - предлагаем услуги по аренде автомобилей, аренда автомобиля в аэропорту, Аренда радара, Аренда GPS-навигатора
+{% endblock %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Услуги |{% endblock %}
+{% else %}
+    {% block title %}Services |{% endblock %}
+{% endif %}
+{% block content %}
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Услуги' %} </h1>
+                </div>
+                <div class="col-md-6 text-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>{% trans 'Услуги' %}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+     service -->
+
+    <section class="inner-service white-bg page-section-ptb">
+        <div class="container">
+            <div class="row no-gutter">
+                {% for x in service %}
+                    <div class="col-md-4">
+                        <div class="feature-box-2 text-center">
+                            <div class="icon service">
+                                <img src="{{ x.image.url }}" alt="">
+                            </div>
+                            <div class="content">
+                                <h6>{% if LANGUAGE_CODE == 'ru' %}
+                                    {{ x.name_rus }}
+                                {% else %}
+                                    {{ x.name }}
+                                {% endif %}</h6>
+                                <p>{% if LANGUAGE_CODE == 'ru' %}
+                                    {{ x.description_rus }}
+                                {% else %}
+                                    {{ x.description }}
+                                {% endif %}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     service -->
+{% endblock %}

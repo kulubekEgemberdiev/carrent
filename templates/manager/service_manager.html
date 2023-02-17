@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Список услуг </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Список услуг</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--=================================
+     inner-intro -->
+    <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="row">
+                <a href="{% url 'service_create' %}" class="btn btn-danger mb-3">Добавить Услугу</a>
+            </div>
+            <div class="row">
+                <table class="table table-hover">
+                    <tr>
+                        <th>#</th>
+                        <th>Название услуги</th>
+                        <th>Цена</th>
+                    </tr>
+                    {% for x in service %}
+                        <tr>
+                            <td></td>
+                            <td>{{ x.name }}</td>
+                            <td>{{ x.description }}</td>
+                            <td>
+                                <a href="{% url 'service_delete' x.pk %}" class="btn">Удалить</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

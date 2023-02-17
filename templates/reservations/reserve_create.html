@@ -1,0 +1,84 @@
+{% extends 'manager_base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+<section class="inner-intro bg-1 bg-overlay-black-70">
+    <div class="container">
+        <div class="row text-center intro-title">
+            <div class="col-md-6 text-md-left d-inline-block">
+                <h1 class="text-white">Создать бронь </h1>
+            </div>
+            <div class="col-md-6 text-md-right float-right">
+                <ul class="page-breadcrumb">
+                    <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                            class="fa fa-angle-double-right"></i></li>
+                    <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                    </li>
+                    <li><span>Создать бронь</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=================================
+inner-intro -->
+<section class="objects-car why-choose page-section-ptb white-bg">
+    <div class="container main-reserve-create">
+        <div class="col-md-12">
+            <a href="{% url 'user_create' %}" class="btn btn-danger mb-2">Создать клиента</a>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="reserve-main">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+        $("#id_departure_date").datepicker({
+            dateFormat: 'dd.mm.yy'
+        });
+        $("#id_arrival_date").datepicker({
+            dateFormat: 'dd.mm.yy'
+
+        });
+    });
+
+    let depDate = document.querySelector("#id_departure_date"),
+        ariveDate = document.querySelector("#id_arrival_date"),
+        carTitle = document.querySelector(".reserve-car-title"),
+        carCheck = document.querySelector(".reserve-section-car-title");
+
+    console.log("ddd");
+    if (localStorage.getItem("reserveCarTitle") != null) {
+        carCheck.style.display = "none";
+        console.log(ariveDate);
+    } else {
+        console.log("hh");
+    }
+
+    depDate.value = localStorage.getItem("departureDate");
+    carTitle.value = localStorage.getItem("reserveCarTitle");
+    ariveDate.value = localStorage.getItem("departureDate");
+
+    let num = localStorage.getItem("departureDate");
+    if (num[0] == 0) {
+        num[1] = +num[1] + 1;
+        console.log(num);
+     }else {
+        num[0] = num[0] + num[1];
+        console.log(num)
+     }
+    console.log(num[0], num[1]);
+
+
+    num = +num[0] + +num[1];
+    console.log(num);
+</script>
+
+{% endblock %}

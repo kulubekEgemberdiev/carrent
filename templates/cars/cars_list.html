@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block description %}
+Аренда авто Бишкек - предлагаем услуги по аренде автомобилей в Бишкеке. У нас Вы найдете любую машину на Ваш выбор
+{% endblock %}
+{% if LANGUAGE_CODE == 'ru' %}
+    {% block ru_title %}Автомобили |{% endblock %}
+{% else %}
+    {% block title %}Cars |{% endblock %}
+{% endif %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+
+    <style>
+        .order-button {
+            width: 80% !important;
+        }
+
+        .order-button:hover {
+            box-shadow: 0 0 7px #db2d2e;
+        }
+    </style>
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Автомобили' %}</h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><a href="{% url 'cars_list' %}">{% trans 'Автомобили' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+
+
+    <!--=================================
+    product-listing  -->
+
+    <section class="page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <div class="isotope-filters vartical-filter">
+                        <button data-filter="" class="active"><span> {% trans 'Все' %}</span> <i
+                                class="fa fa-angle-right"></i>
+                        </button>
+                        <button data-filter=".econom"><span> {% trans 'Эконом' %}</span> <i
+                                class="fa fa-angle-right"></i></button>
+                        <button data-filter=".middle"><span> {% trans 'Средний' %}</span> <i
+                                class="fa fa-angle-right"></i>
+                        </button>
+                        <button data-filter=".business"><span> {% trans 'Бизнес' %}</span> <i
+                                class="fa fa-angle-right"></i></button>
+                        <button data-filter=".crossower"><span> {% trans 'Кроссовер' %}</span> <i
+                                class="fa fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12 ">
+                    <div class="isotope column-3" style="overflow: hidden">
+                        {% for x in object_list %}
+                            <div class="grid-item {% if x.car_class == 'Эконом (класс B)' %}
+                                                    econom
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    middle
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    business
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    crossower
+                                                {% endif %}">
+                                <a href="{% url 'car_detail' x.pk %}">
+                                    <div class="car-item car-item-4 text-center">
+                                        <div class="car-image">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <div class="car-overlay-banner">
+                                                <ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="car-list">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-registered"></i> {{ x.year }}</li>
+                                                <li><i class="fa fa-cog"></i>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        {% if x.gear_box == 'Механика' %}
+                                                            Mechanics
+                                                        {% elif x.gear_box == 'Вариатор' %}
+                                                            Variator
+                                                        {% elif x.gear_box == 'Автомат' %}
+                                                            Automatic
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ x.gear_box }}
+                                                    {% endif %}
+                                                </li>
+                                                <li><i class="fa fa-dashboard"></i> {{ x.engine_cap }} {% trans 'куб' %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="car-content">
+                                            <div class="star">
+                                                {% if x.car_class == 'Эконом (класс B)' %}
+                                                    <a href="{% url 'class_b' %}"
+                                                       class="old-price">#{% trans 'Эконом' %}</a>
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    <a href="{% url 'class_c' %}"
+                                                       class="old-price">#{% trans 'Средний' %}</a>
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    <a href="{% url 'class_e' %}"
+                                                       class="old-price">#{% trans 'Бизнес' %}</a>
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    <a href="{% url 'class_j' %}"
+                                                       class="old-price">#{% trans 'Кроссовер' %}</a>
+                                                {% endif %}
+                                            </div>
+                                            <a href="#">{{ x.title }}</a>
+                                            <div class="separator"></div>
+                                            <div class="price">
+                                                <span class="new-price">{% trans 'от' %} {{ x.price_20 }} {% trans 'сом/сут' %} </span>
+                                            </div>
+                                            <div class="order">
+                                                <a class="order-button">{% trans 'Заказать' %}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {#  Modal window start  #}
+    <div class="modal-window">
+        <div class="modal-content">
+            <div class="close-modalW">
+                <span id="modalX">x</span>
+            </div>
+            <form action="{% url 'send_email' %}">
+                <div class="main-title-modal">
+                    <h2>{% trans 'Экспресс заявка' %}</h2>
+                    <p class="">{% blocktrans %}Заполните экспресс заявку и наши менеджеры свяжутся с вами для заполнения
+                        заявки по
+                        телефону.{% endblocktrans %}</p>
+                </div>
+
+                <div class="main-content-modal">
+                    <div class="modal-content-input-name">
+                        <input type="text" required name="name" class="modal-input" placeholder="{% trans 'Имя' %}">
+                        <input type="text" required name="email" class="modal-input" placeholder="Email">
+                        <input type="text" required name="phone" class="modal-input"
+                               placeholder="{% trans 'Телефон' %}">
+                    </div>
+
+                    <div class="modal-car-model">
+                        <p class="modal-car-model-title">{% trans 'Модель транспортного средства' %}:</p>
+                        <select required class="modal-input" name="car" id="">
+                            {% for x in cars %}
+                                <option value="{{ x.title }} ({{ x.car_number }})">{{ x.title }} ({{ x.car_color }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="modal-date-inputs">
+                        <div class="inputBlock">
+                            <label class="modal-label">{% trans 'Дата начала аренды' %}</label>
+                            <input required type="date" name="start_date" class="modal-input modal-input-date"
+                                   id="start-date">
+                        </div>
+
+                        <div class="inputBlock">
+                            <label class="modal-label">{% trans 'Дата окончания аренды' %}</label>
+                            <input required type="date" name="end_date" class="modal-input modal-input-date"
+                                   id="end-date">
+                        </div>
+                    </div>
+
+                    <div class="modal-main-order">
+                        <div class="modal-input-block">
+                            <input required type="checkbox" class="modal-input modal-input-date modal-checkbox"
+                                   id="dp1584006716659">
+                            <lable class="modal-checkbox-label">{% trans 'Я согласен на обработку персональных данных' %}</lable>
+                        </div>
+                        <div class="modal-order-btn-main">
+                            <button type="submit" class="send-btn">{% trans 'ОТПРАВИТЬ' %}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {#  Modal window end  #}
+
+    <script>
+        let modal = document.querySelector(".modal-window"),
+            closeModal = document.querySelector("#modalX"),
+            orderBtn = document.querySelectorAll(".order-button");
+
+        console.log(modal);
+        console.log(closeModal);
+
+
+        orderBtn.forEach(item => item.addEventListener("click", function () {
+            modal.style.display = "flex";
+        }));
+        closeModal.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+    </script>
+    <!--=================================
+    product-listing  -->
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+    Эконом класс |
+{% endblock %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Средний класс' %} </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><a href="#">{% trans 'Средний класс' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <!--=================================
+ feature-car -->
+
+    <section class="feature-car page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme" data-nav-arrow="true" data-items="4" data-md-items="4"
+                         data-sm-items="2" data-xs-items="1" data-space="20">
+                        {% for x in object_list %}
+                            <div class="item">
+                                <div class="car-item text-center">
+                                    <a href="{% url 'car_detail' x.pk %}">
+                                        <div class="car-image">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <div class="car-overlay-banner">
+                                                <ul>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="car-list">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-registered"></i> {{ x.year }}</li>
+                                                <li><i class="fa fa-cog"></i>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        {% if x.gear_box == 'Механика' %}
+                                                            Mechanics
+                                                        {% elif x.gear_box == 'Вариатор' %}
+                                                            Variator
+                                                        {% elif x.gear_box == 'Автомат' %}
+                                                            Automatic
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ x.gear_box }}
+                                                    {% endif %}
+                                                </li>
+                                                <li><i class="fa fa-dashboard"></i> {{ x.engine_cap }} {% trans 'куб' %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="car-content">
+                                            <div class="star">
+                                                {% if x.car_class == 'Эконом (класс B)' %}
+                                                    <a href="{% url 'class_b' %}"
+                                                       class="old-price">#{% trans 'Эконом' %}</a>
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    <a href="{% url 'class_c' %}"
+                                                       class="old-price">#{% trans 'Средний' %}</a>
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    <a href="{% url 'class_e' %}"
+                                                       class="old-price">#{% trans 'Бизнес' %}</a>
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    <a href="{% url 'class_j' %}"
+                                                       class="old-price">#{% trans 'Кроссовер' %}</a>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a>
+                                            <div class="separator"></div>
+                                            <div class="price">
+                                                <span class="new-price">{% trans 'от' %} {{ x.price_20 }} {% trans 'сом/сут' %} </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class='formatBlock'><h2>{% trans 'Средний класс' %}</h2><br>
+                        <p>{% blocktrans %}У данного класса автомобилей есть и другие наименования: компакт-класс,
+                            гольф-класс. Второе название объясняется тем, что долгое время лидерство в этом сегменте
+                            автомобильного рынка удерживала популярная немецкая модель Volkswagen
+                            Golf.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Преимущества машин среднего класса очевидны. Они отличаются высокой
+                            маневренностью, очень удобны в управлении, комфортабельны, имеют стильный оригинальный
+                            дизайн. Такие машины одинаково хорошо подходят и для загородных путешествий, и для
+                            регулярных поездок по загруженным городским маршрутам. Просторный салон оборудован
+                            мультимедийной системой и кондиционером. Имеется система АБС и другие полезные функции.
+                            Объемный багажник с легкостью вмещает всю дорожную кладь.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}По утверждению изготовителей машины среднего класса рассчитаны на перевозку 5
+                            пассажиров. Но чтобы поездка была максимально комфортной, лучше брать авто напрокат для
+                            небольших компаний – до 4 человек.{% endblocktrans %}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     feature-car -->
+
+
+{% endblock %}

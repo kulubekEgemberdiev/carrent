@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+    Эконом класс |
+{% endblock %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Эконом класс' %} </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><a href="#">{% trans 'Эконом класс' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <!--=================================
+ feature-car -->
+
+    <section class="feature-car page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme" data-nav-arrow="true" data-items="4" data-md-items="4"
+                         data-sm-items="2" data-xs-items="1" data-space="20">
+                        {% for x in object_list %}
+                            <div class="item">
+                                <div class="car-item text-center">
+                                    <a href="{% url 'car_detail' x.pk %}">
+                                        <div class="car-image">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <div class="car-overlay-banner">
+                                                <ul>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="car-list">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-registered"></i> {{ x.year }}</li>
+                                                <li><i class="fa fa-cog"></i>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        {% if x.gear_box == 'Механика' %}
+                                                            Mechanics
+                                                        {% elif x.gear_box == 'Вариатор' %}
+                                                            Variator
+                                                        {% elif x.gear_box == 'Автомат' %}
+                                                            Automatic
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ x.gear_box }}
+                                                    {% endif %}
+                                                </li>
+                                                <li><i class="fa fa-dashboard"></i> {{ x.engine_cap }} {% trans 'куб' %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="car-content">
+                                            <div class="star">
+                                                {% if x.car_class == 'Эконом (класс B)' %}
+                                                    <a href="{% url 'class_b' %}"
+                                                       class="old-price">#{% trans 'Эконом' %}</a>
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    <a href="{% url 'class_c' %}"
+                                                       class="old-price">#{% trans 'Средний' %}</a>
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    <a href="{% url 'class_e' %}"
+                                                       class="old-price">#{% trans 'Бизнес' %}</a>
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    <a href="{% url 'class_j' %}"
+                                                       class="old-price">#{% trans 'Кроссовер' %}</a>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a>
+                                            <div class="separator"></div>
+                                            <div class="price">
+                                                <span class="new-price">{% trans 'от' %} {{ x.price_20 }} {% trans 'сом/сут' %} </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class='formatBlock mt-lg-4'><h2>{% trans 'Эконом класс' %}</h2><br>
+                        <p>{% blocktrans %}Бюджетные авто пользуются неизменным спросом на протяжении многих лет. Ведь
+                            они дают
+                            возможность
+                            перемещаться по городу и совершать загородные поездки без лишних
+                            затрат.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Если вы планируете покупку машины, но пока не определились с выбором,
+                            заказывайте в {% endblocktrans %}<a
+                                    href="{% url 'home' %}"> {% trans 'аренду авто' %}</a>
+                            {% blocktrans %}эконом-класса и совершайте пробные поездки. Такой тест-драйв обойдется совсем
+                            недорого и
+                            позволит принять верное решение.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Машины этого класса обладают целым рядом преимуществ – они довольно
+                            маневренны, мобильны,
+                            экономно
+                            расходуют топливо. К минусам можно отнести отсутствие оригинального дизайна и недостаточные
+                            показатели комфортности. Поэтому в случае торжественных событий (например, свадьба), лучше
+                            отдать
+                            предпочтение премиальным моделям.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Кузов малогабаритной машины чаще всего представляет собой 3 или 5-дверный
+                            хэтчбек. Также есть
+                            варианты с седанами и кузовами универсал.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Ширина малогабаритных авто не превышает 1,7 м. А их средняя длина колеблется
+                            в пределах от
+                            3,9 до 4,2
+                            м. Вместимость салона ограничена – автомобили эконом-класса рассчитаны на перевозку 4-5
+                            пассажиров.
+                            При этом стоит учесть, что 3 взрослых человека, с трудом уместившись на заднем сиденье,
+                            будут
+                            чувствовать себя не слишком комфортно.{% endblocktrans %}</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     feature-car -->
+
+
+{% endblock %}

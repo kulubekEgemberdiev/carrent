@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load crispy_forms_field %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Добавить услугу </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Добавить услугу</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+    inner-intro -->
+    <section class="objects-car why-choose page-section-ptb white-bg">
+        <div class="container">
+            <div class="col-md-6">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.name|as_crispy_field }}
+                    {{ form.name_rus|as_crispy_field }}
+                    {{ form.description|as_crispy_field }}
+                    {{ form.description_rus|as_crispy_field }}
+                    {{ form.price|as_crispy_field }}
+                    {{ form.image|as_crispy_field }}
+
+                    <button type="submit" class="btn btn-success">Создать</button>
+                </form>
+            </div>
+            <div class="h30">&nbsp;</div>
+
+        </div>
+    </section>
+
+{% endblock %}

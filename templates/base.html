@@ -1,0 +1,565 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="Keywords"
+          content="Аренда авто Бишкек, Аренда авто в Бишкеке, Аренда авто, Автопрокат авто, Бишкек, Автопрокат в Бишкеке, Автопрокат Бишкек, Rent a car Bishkek, Rent a car, Bishkek, Прокат Машин, Прокат машин в Бишкеке, Прокат машин Бишкек, Аренда авто в аэропорту, Rent car at the airport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>{% if LANGUAGE_CODE == 'ru' %}
+        {% block ru_title %}{% endblock %} City Rent - Автопрокат в Бишкеке
+    {% else %}
+        {% block title %}{% endblock %} City Rent - Rent a car in Bishkek
+    {% endif %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+
+    <!-- All -->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/styles/all.css' %}">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- flaticon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}"/>
+
+    <!-- mega menu -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mega-menu/mega_menu.css' %}"/>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick/slick-theme.css' %}"/>
+
+    <!-- owl-carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl-carousel/owl.carousel.css' %}"/>
+
+    <!-- magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup/magnific-popup.css' %}"/>
+
+    <!-- jquery-ui -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %}"/>
+
+    <!-- revolution -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}"/>
+
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <!-- responsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
+
+    <!-- Style customizer -->
+    <link rel="stylesheet" href="#" data-style="styles"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-customizer.css' %}"/>
+
+    <!-- Table -->
+    <link rel="stylesheet" href="{% static 'table/vendor/animsition/animsition.css' %}">
+    <link rel="stylesheet" href="{% static 'table/vendor/footable/footable.core.css' %}">
+    <link rel="stylesheet" href="{% static 'table/fonts/web-icons/web-icons.min.css' %}">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161122176-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161122176-1');
+    </script>
+
+</head>
+
+<body>
+
+
+{#<div id="loading" style="margin: 10%;">#}
+{#    <div id="loading-center">#}
+{#        <img src="{% static 'images/loader.gif' %}" alt="">#}
+{#    </div>#}
+{#</div>#}
+
+<!--=================================
+  loading -->
+
+<!--=================================
+ header -->
+
+<header id="header" class="defualt">
+    <div class="topbar bg-light text-black">
+        <div class="container nav-main-padding-null">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="topbar-left text-lg-left">
+                        <ul class="list-inline">
+                            <li style="color: black"><i class="bi bi-envelope" style="margin-right: 10px; color: black;"></i>cityrent.kg@gmail.com</li>
+                            <li style="color: black"><i class="bi bi-clock" style="margin-right: 10px; color: black;"></i>{% trans 'Работаем' %} 24/7</li>
+                            <li style="color: black"><i class="bi bi-geo-alt" style="margin-right: 10px; color: black;"></i>{% trans 'г. Бишкек' %}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 social-media-main text-center">
+                    <a href="viber://chat?number=+996771979793"><img class="nav-item-social"
+                                                                     src="{% static 'images/viber.png' %}" alt=""
+                    width="35px" height="35px"></a>
+                    <a href="https://t.me/cityrent"><img class="nav-item-social"
+                                                         src="{% static 'images/telegram-item.png' %}" alt=""
+                    width="35px" height="35px" style="margin-left: 10px"></a>
+                    <a href="https://wa.me/996771979793"><img class="nav-item-social"
+                                                              src="{% static 'images/whatsapp-item.png' %}" alt=""
+                    width="40px" height="40px" style="margin-left: 10px"></a>
+                </div>
+                <div class="col-lg-3 col-md-9 lang-change-nav">
+                    <div class="topbar-right text-lg-right text-center">
+                        <ul class="list-inline">
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <button class="btn btn-light lang-top" type="submit"
+                                                name="language"
+                                                value="{{ language.code }}">
+                                            {{ language.code.upper }}
+                                        </button>
+                                    {% endfor %}
+                                </form>
+                            </li>
+                            <li style="color: black;"><i class="bi bi-telephone-fill" style="margin-right: 10px;"></i>
+                                <a href="tel:+996771979793" style="color: black"> +(996) 771 97-97-93</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=================================
+     mega menu -->
+
+    <div class="menu bg-dark">
+        <!-- menu start -->
+        <nav id="menu" class="mega-menu">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+                <div class="container nav-main-padding-null">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- menu logo -->
+                            <ul class="menu-logo">
+                                <li>
+                                    <a href="{% url 'home' %}"><img id="logo_img"
+                                                                    src="{% static 'images/logo-light.png' %}"
+                                                                    alt="logo" height="50px"> </a>
+                                </li>
+                            </ul>
+                            <!-- menu links -->
+                            <ul class="menu-links">
+
+                                <!-- active class -->
+                                <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}><a
+                                        href="{% url 'home' %}">{% trans 'Главная' %} </a></li>
+                                <li {% if request.resolver_match.url_name == 'cars_list' %}class="active"{% endif %}><a
+                                        href="{% url 'cars_list' %}">{% trans 'Автомобили' %} </a></li>
+                                <li {% if request.resolver_match.url_name == 'condition' %}class="active"{% endif %}><a
+                                        href="{% url 'condition' %}">{% trans 'Условия проката' %} </a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'price' %}class="active"{% endif %}><a
+                                        href="{% url 'price' %}">{% trans 'Тарифы' %} </a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'service' %}class="active"{% endif %}><a
+                                        href="{% url 'service' %}"> {% trans 'Услуги' %}</a>
+                                </li>
+                                <li {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}><a
+                                        href="{% url 'contact' %}"> {% trans 'Контакты' %}</a>
+                                </li>
+                                {% if user.is_authenticated %}
+                                    <li {% if request.resolver_match.url_name == 'manager_list' %}class="active"{% endif %}>
+                                        <a href="{% url 'manager_list' %}">{% trans 'Админ панель' %}</a></li>
+
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+        <!-- menu end -->
+    </div>
+</header>
+
+<!--=================================
+ header -->
+
+{% block content %}
+
+{% endblock %}
+
+<hr class="gray">
+
+<!--=================================
+ footer -->
+
+<footer class="footer bg-2 bg-overlay-black-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="social">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="about-content">
+                    <img class="img-fluid" id="logo-footer" src="{% static 'images/logo-light.png' %}" alt="">
+                    <p>{% blocktrans %}Автомобиль значительно экономит время на перемещения по городу, позволяя
+                        добраться в пункт
+                        назначения быстрее, чем на общественном транспорте. Такое средство передвижения дает комфорт и
+                        уверенность.{% endblocktrans %}</p>
+                </div>
+                <div class="address">
+                    <ul>
+                        {#                        <li><i class="fa fa-map-marker"></i><span>{{ contact.0.address }}</span></li>#}
+                        <li><i class="fa fa-phone"></i><span>{{ contact.0.phone }}</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>{{ contact.0.email }}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 service-phone">
+                <div class="usefull-link">
+                    <h6 class="text-white">{% trans 'Ссылки' %}</h6>
+                    <ul>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i> {% trans 'Главная' %}</a></li>
+                        <li><a href="{% url 'cars_list' %}"><i
+                                class="fa fa-angle-double-right"></i> {% trans 'Автомобили' %}</a></li>
+                        <li><a href="{% url 'condition' %}"><i
+                                class="fa fa-angle-double-right"></i> {% trans 'Условия проката' %}</a></li>
+                        <li><a href="{% url 'price' %}"><i class="fa fa-angle-double-right"></i> {% trans 'Тарифы' %}
+                        </a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-angle-double-right"></i>{% trans 'Выход' %}
+                            </a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 service-phone service-phone1">
+                <div class="usefull-link">
+                    <ul>
+                        <li><a href="{% url 'service' %}"><i class="fa fa-angle-double-right"></i>{% trans 'Услуги' %}
+                        </a></li>
+                        <li><a href="{% url 'contact' %}"><i class="fa fa-angle-double-right"></i>{% trans 'Контакты' %}
+                        </a></li>
+                        <li><a href="{% url 'class_b' %}"><i
+                                class="fa fa-angle-double-right"></i>{% trans 'Эконом (класс B)' %}</a></li>
+                        <li><a href="{% url 'class_c' %}"><i
+                                class="fa fa-angle-double-right"></i>{% trans 'Средний (класс C)' %}</a></li>
+                        <li><a href="{% url 'class_e' %}"><i
+                                class="fa fa-angle-double-right"></i>{% trans 'Бизнес (класс E)' %}</a></li>
+                        <li><a href="{% url 'class_j' %}"><i
+                                class="fa fa-angle-double-right"></i>{% trans 'Кроссовер (класс J)' %}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="news-letter">
+                    <h6 class="text-white">Instagram </h6>
+                    <div class="subs-feilds">
+                        <div class="suscribe-input">
+
+                            <!-- LightWidget WIDGET -->
+                            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+                            <iframe src="//lightwidget.com/widgets/66ddb22479dc5fb9b7b094e426946ec6.html" scrolling="no"
+                                    allowtransparency="true" class="lightwidget-widget"
+                                    style="width:250px;border:0;overflow:hidden;"></iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="copyright">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="text-lg-left text-center">
+                        <p>©Copyright 2023 CarCityRent Developed by <a href="https://www.lightcode-bishkek.xyz/" target="_blank">Light Code</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--=================================
+ footer -->
+
+
+<!--=================================
+back to top -->
+
+<div class="car-top">
+    <span><img src="{% static 'images/car.png' %}" alt=""></span>
+</div>
+
+<!--=================================
+back to top -->
+
+{#  Modal window start  #}
+<div class="modal-window">
+    <div class="modal-content">
+        <div class="close-modalW">
+            <span id="modalX">x</span>
+        </div>
+        <form action="{% url 'send_email' %}">
+            {% csrf_token %}
+            <div class="main-title-modal">
+                <h2>{% trans 'Экспресс заявка' %}</h2>
+                <p class="">{% blocktrans %}Заполните экспресс заявку и наши менеджеры свяжутся с вами для заполнения
+                    заявки по
+                    телефону.{% endblocktrans %}</p>
+            </div>
+
+            <div class="main-content-modal">
+                <div class="modal-content-input-name">
+                    <input type="text" required name="name" class="modal-input" placeholder="{% trans 'Имя' %}">
+                    <input type="text" required name="email" class="modal-input" placeholder="Email">
+                    <input type="text" required name="phone" class="modal-input" placeholder="{% trans 'Телефон' %}">
+                </div>
+
+                <div class="modal-car-model">
+                    <p class="modal-car-model-title">{% trans 'Модель транспортного средства' %}:</p>
+                    <select class="modal-input" required name="car" id="">
+                        {% for x in cars %}
+                            <option value="{{ x.title }} ({{ x.car_number }})">{{ x.title }} ({{ x.car_color }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="modal-date-inputs">
+                    <div class="inputBlock input-block-m-10">
+                        <label class="modal-label">{% trans 'Дата начала аренды' %}</label>
+                        <input required type="date" name="start_date" class="modal-input modal-input-date"
+                               id="start-date">
+                    </div>
+
+                    <div class="inputBlock">
+                        <label class="modal-label">{% trans 'Дата окончания аренды' %}</label>
+                        <input required type="date" name="end_date" class="modal-input modal-input-date"
+                               id="end-date">
+                    </div>
+                </div>
+
+                <div class="modal-main-order">
+                    <div class="modal-input-block">
+                        <input type="checkbox" required class="modal-input modal-input-date modal-checkbox"
+                               id="dp1584006716659">
+                        <lable class="modal-checkbox-label">{% trans 'Я согласен на обработку персональных данных' %}</lable>
+                    </div>
+                    <div class="modal-order-btn-main">
+                        <button type="submit" class="send-btn">{% trans 'ОТПРАВИТЬ' %}</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{#  Modal window end  #}
+
+<!--=================================
+ jquery -->
+
+<!-- jquery  -->
+<script type="text/javascript" src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+
+<!-- bootstrap -->
+<script type="text/javascript" src="{% static "js/popper.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+
+<!-- mega-menu -->
+<script type="text/javascript" src="{% static "js/mega-menu/mega_menu.js" %}"></script>
+
+<!-- appear -->
+<script type="text/javascript" src="{% static "js/jquery.appear.js" %}"></script>
+
+<!-- counter -->
+<script type="text/javascript" src="{% static "js/counter/jquery.countTo.js" %}"></script>
+
+<!-- isotope -->
+<script type="text/javascript" src="{% static "js/isotope/isotope.pkgd.min.js" %}"></script>
+
+<!-- jquery-ui -->
+<script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+
+<!-- owl-carousel -->
+<script type="text/javascript" src="{% static "js/owl-carousel/owl.carousel.min.js" %}"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+
+<!-- magnific popup -->
+<script type="text/javascript" src="{% static "js/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+<!-- revolution -->
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.tools.min.js" %}"></script>
+<script type="text/javascript" src="{% static "revolution/js/jquery.themepunch.revolution.min.js" %}"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.actions.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.carousel.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.kenburn.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.layeranimation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.migration.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.navigation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.parallax.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "revolution/js/extensions/revolution.extension.slideanims.min.js" %}"></script>
+<script type="text/javascript" src="{% static "revolution/js/extensions/revolution.extension.video.min.js" %}"></script>
+
+<!-- style customizer  -->
+<script type="text/javascript" src="{% static "js/style-customizer.js" %}"></script>
+
+<!-- custom -->
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+
+<!-- Table -->
+<script src="{% static 'table/vendor/babel-external-helpers/babel-external-helpers.js' %}"></script>
+<script src="{% static 'table/vendor/footable/footable.min.js' %}"></script>
+<script src="{% static 'table/examples/footable.js' %}"></script>
+
+<script type="text/javascript">
+    (function ($) {
+        "use strict";
+
+        var tpj = jQuery;
+        var revapi2;
+        tpj(document).ready(function () {
+            if (tpj("#rev_slider_2_1").revolution == undefined) {
+                revslider_showDoubleJqueryError("#rev_slider_2_1");
+            } else {
+                revapi2 = tpj("#rev_slider_2_1").show().revolution({
+                    sliderType: "standard",
+                    sliderLayout: "fullwidth",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        mouseScrollReverse: "default",
+                        onHoverStop: "off",
+                        bullets: {
+                            enable: true,
+                            hide_onmobile: false,
+                            style: "hermes",
+                            hide_onleave: false,
+                            direction: "horizontal",
+                            h_align: "center",
+                            v_align: "bottom",
+                            h_offset: 0,
+                            v_offset: 50,
+                            space: 10,
+                            tmp: ''
+                        }
+                    },
+                    visibilityLevels: [1240, 1024, 778, 480],
+                    gridwidth: 1570,
+                    gridheight: 1000,
+                    lazyType: "none",
+                    shadow: 0,
+                    spinner: "spinner3",
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    disableProgressBar: "on",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        nextSlideOnWindowFocus: "off",
+                        disableFocusListener: false,
+                    }
+                });
+            }
+        });
+    })(jQuery);
+
+    let modal = document.querySelector(".modal-window"),
+        closeModal = document.querySelector("#modalX"),
+        orderBtn = document.querySelectorAll(".order-button");
+
+    orderBtn.forEach(item => item.addEventListener("click", function () {
+        modal.style.display = "flex";
+    }));
+
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    let minDate = new Date(),
+        day = minDate.getDay();
+
+    $("#start-date").datepicker({
+        minDate: minDate,
+        numberOfMonth: 1,
+        onClose: function (selectDate) {
+            $("#end-date").datepicker("option", "minDate", selectDate)
+        },
+        dateFormat: 'dd.mm.yy'
+    });
+    $("#end-date").datepicker({
+        minDate: minDate,
+        numberOfMonth: 1,
+        dateFormat: 'dd.mm.yy'
+    });
+</script>
+
+<!-- ****** call me btn **** -->
+<div class="callback-bt">
+    <a href="tel:+996771979793" rel="nofollow">
+        <div class="text-call">
+            <i class="fa fa-phone"></i>
+            <span>Позвонить нам</span>
+        </div>
+    </a>
+</div>
+<!-- ****** call me btn **** -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>

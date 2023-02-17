@@ -1,0 +1,492 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">Календарь </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Главная</a> <i
+                                class="fa fa-angle-double-right"></i></li>
+                        <li><a href="{% url 'manager_list' %}">Админ панель</a> <i class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><span>Календарь</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <section class="objects-car why-choose page-section-ptb white-bg">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="calendar disable-selection" id="calendar">
+                    <div class="text-center mt-3">
+                        <a href="{% url "income" %}" class="btn btn-danger">Доходы</a>
+                        <a href="{% url "outcome" %}" class="btn btn-danger">Расходы</a>
+                        <a href="{% url "profit" %}" class="btn btn-danger">Прибыль</a>
+                        <a href="{% url "users_list" %}" class="btn btn-danger">БД Клентов</a>
+                        <a href="{% url "car_manager" %}" class="btn btn-danger">БД Авто</a>
+                        <a href="{% url "agrement_list" %}" class="btn btn-danger">Список договоров</a>
+                    </div>
+                    <div class="left-side">
+                        <div class="current-day text-center">
+                            <h1 class="calendar-left-side-day"></h1>
+                            <div class="calendar-left-side-day-of-week"></div>
+                        </div>
+                        <div class="current-day-events">
+                            <div>Current Events:</div>
+                            <ul class="current-day-events-list"></ul>
+                        </div>
+                        <div class="add-event-day">
+                            <input type="text" class="add-event-day-field" placeholder="Create an Event">
+                            <span class="fa fa-plus-circle cursor-pointer add-event-day-field-btn"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="text-right calendar-change-year">
+                        <div class="calendar-change-year-slider">
+                            <span class="fa fa-caret-left cursor-pointer calendar-change-year-slider-prev"></span>
+                            <span class="calendar-current-year"></span>
+                            <span class="fa fa-caret-right cursor-pointer calendar-change-year-slider-next"></span>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="calendar-month-list">
+                            <ul class="calendar-month"></ul>
+                        </div>
+                        <div class="calendar-day-list">
+                            <li class="car-models1">Автомобиль</li>
+                            <ul class="calendar-days">
+                            </ul>
+                        </div>
+                        {% for car in cars %}
+                            <div class="calendar-car-list">
+                                <li class="car-models">{{ car.title }}</li>
+                                <ul class="car-days" title="{{ car.title }}"></ul>
+                            </div>
+                        {% endfor %}
+
+                        <br>
+                        <a href="{% url "reserve_create" %}" class="reserve-create-button">Создать бронь</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        const AVAILABLE_WEEK_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const localStorageName = 'calendar-events';
+
+        class CALENDAR {
+            constructor(options) {
+                this.options = options;
+                this.elements = {
+                    days: this.getFirstElementInsideIdByClassName('calendar-days'),
+                    cars: document.getElementsByClassName('car-days'),
+                    week: this.getFirstElementInsideIdByClassName('calendar-week'),
+                    month: this.getFirstElementInsideIdByClassName('calendar-month'),
+                    year: this.getFirstElementInsideIdByClassName('calendar-current-year'),
+                    eventList: this.getFirstElementInsideIdByClassName('current-day-events-list'),
+                    eventField: this.getFirstElementInsideIdByClassName('add-event-day-field'),
+                    eventAddBtn: this.getFirstElementInsideIdByClassName('add-event-day-field-btn'),
+                    currentDay: this.getFirstElementInsideIdByClassName('calendar-left-side-day'),
+                    currentWeekDay: this.getFirstElementInsideIdByClassName('calendar-left-side-day-of-week'),
+                    prevYear: this.getFirstElementInsideIdByClassName('calendar-change-year-slider-prev'),
+                    nextYear: this.getFirstElementInsideIdByClassName('calendar-change-year-slider-next'),
+                    carReservation: {},
+                    carTitle: document.getElementsByClassName('car-models'),
+                    carList: document.getElementsByClassName('car-days'),
+                    countDays: 0,
+                    emplDays: []
+                };
+
+                this.eventList = JSON.parse(localStorage.getItem(localStorageName)) || {};
+
+                this.date = +new Date();
+                this.options.maxDays = 37;
+                this.init();
+
+            }
+
+// App methods
+
+            init() {
+                if (!this.options.id) return false;
+                this.eventsTrigger();
+                this.carObjectDew();
+                this.drawAll();
+                {#this.drawCars();#}
+                {#this.checkStatus();#}
+            }
+
+            // draw Methods
+            drawAll() {
+                this.drawDays();
+                this.drawMonths();
+                this.drawYearAndCurrentDay();
+                this.drawCars();
+                this.checkStatus();
+                this.drawEmployments();
+            }
+
+            drawYearAndCurrentDay() {
+                let calendar = this.getCalendar();
+                this.elements.year.innerHTML = calendar.active.year;
+                this.elements.currentDay.innerHTML = calendar.active.day;
+            }
+
+            carObjectDew() {
+                var carReservation = {};
+
+                {% for reserve in object_list %}
+
+                    let {{ reserve.reserve_car_js }} =
+                    {
+                    }
+                    ;
+                    ({{ reserve.reserve_car_js }}).reserveCar = "{{ reserve.reserve_car.title }}";
+                    ({{ reserve.reserve_car_js }}).carStatus = "{{ reserve.status }}";
+                    ({{ reserve.reserve_car_js }}).arrivalDate = "{{ reserve.arrival_date|date:'d m Y' }}";
+                    ({{ reserve.reserve_car_js }}).departureDate = "{{ reserve.departure_date|date:'d m Y' }}";
+                    ({{ reserve.reserve_car_js }}).reserveId = "{{ reserve.id }}";
+                    ({{ reserve.reserve_car_js }}).reserveCarId = "{{ reserve.reserve_car.id }}";
+                    carReservation.{{ reserve.reserve_car_js }} = ({{ reserve.reserve_car_js }});
+
+                    this.elements.carReservation = carReservation;
+                {% endfor %}
+
+
+
+            }
+
+            drawDays() {
+                let calendar = this.getCalendar();
+
+                let daysInActiveMonth = this.range(calendar.active.days).map((idx) => {
+                    let dayNumber = idx + 1;
+                    let today = new Date();
+                    return {
+                        dayNumber,
+                        today: today.getDate() === dayNumber && today.getFullYear() === calendar.active.year && today.getMonth() === calendar.active.month,
+                        month: calendar.active.month,
+                        year: calendar.active.year,
+                        selected: calendar.active.day === dayNumber,
+                        currentMonth: true
+                    }
+                });
+
+                let days = [...daysInActiveMonth,];
+
+                days = days.map(day => {
+                    let newDayParams = day;
+                    let formatted = this.getFormattedDate(new Date(`${Number(day.month) + 1}/${day.dayNumber}/${day.year}`));
+                    newDayParams.hasEvent = this.eventList[formatted];
+                    return newDayParams;
+                });
+
+                let daysTemplate = "";
+                let countDays = 0;
+                days.forEach(day => {
+                    daysTemplate += `<li class="${day.currentMonth ? '' : 'another-month'}${day.today ? ' active-day ' : ''}${day.selected ? 'selected-day' : ''}${day.hasEvent ? ' event-day' : ''}" data-day="${day.dayNumber}" data-month="${day.month}" data-year="${day.year}"></li>`;
+                    countDays++
+
+                });
+                this.elements.countDays = countDays;
+
+                daysTemplate += `<li class="employments"> % </li>`;
+
+                this.elements.days.innerHTML = daysTemplate;
+            }
+
+            drawCars() {
+                for (let i = 0; i < this.elements.cars.length; i++) {
+                    let calendar = this.getCalendar();
+
+                    let daysInActiveMonth = this.range(calendar.active.days).map((idx) => {
+                        let dayNumber = idx + 1;
+                        let today = new Date();
+                        return {
+                            dayNumber,
+                            today: today.getDate() === dayNumber && today.getFullYear() === calendar.active.year && today.getMonth() === calendar.active.month,
+                            month: calendar.active.month + 1,
+                            year: calendar.active.year,
+                            selected: calendar.active.day === dayNumber,
+                            currentMonth: true
+                        }
+                    });
+                    let days = [...daysInActiveMonth,];
+                    let cars = [...daysInActiveMonth,];
+
+                    {#let a = this.elements.carTitle[1].innerText,#}
+                    let carsTemplate = "";
+                    days.forEach(day => {
+                        carsTemplate += `<li class="cars" title="${day.dayNumber} 0${day.month} ${day.year}" ></li>`
+                    });
+
+                    {#console.log(this.elements.countDays);#}
+                    carsTemplate += `<li class="car-employments" title="car-employments"></li>`;
+
+                    this.elements.cars[i].innerHTML = carsTemplate;
+                    localStorage.removeItem("departureDate");
+                    localStorage.removeItem("reserveCarTitle");
+                }
+            }
+
+            drawEmployments() {
+                for (let i = 0; i < this.elements.carList.length; i++) {
+
+                    for (let b = 0; b < this.elements.carList[i].children.length; b++) {
+                        if (this.elements.carList[i].children[b].title == "car-employments") {
+                            let num = +this.elements.emplDays[i];
+                            let days = +this.elements.countDays;
+                            let employment = num / days * 100;
+                            console.log(employment);
+                            this.elements.carList[i].children[b].innerHTML = Math.round(employment);
+                        }
+                    }
+
+                }
+                this.elements.countDays = 0;
+                this.elements.emplDays = [];
+                console.log(this.elements.emplDays);
+            }
+
+
+            checkStatus() {
+                let carEvery = document.querySelectorAll(".cars");
+                carEvery.forEach(car => {
+                    car.addEventListener("click", function () {
+
+                        let id = car.getAttribute("reserveid");
+                        let idNum = +id;
+                        let depDate = car.title;
+
+                        let carTitle = car.getAttribute("carTitle");
+                        console.log(carTitle);
+                        {#let depTitle = car#}
+                        let re = depDate.replace(/ /g, ".");
+                        {#console.log(car);#}
+
+
+                        if (idNum != 0) {
+                            window.location = 'http://cityrent.kg/reservations/' + idNum + '/update';
+                            localStorage.setItem("departureDate", re);
+                            localStorage.setItem("reserveCarTitle", carTitle);
+                        } else {
+                            localStorage.setItem("departureDate", re);
+                            localStorage.setItem("reserveCarTitle", carTitle);
+
+                            window.location = "http://cityrent.kg/reservations/create/";
+                        }
+
+
+                    })
+
+                });
+                for (let key in this.elements.carReservation) {
+                    if (this.elements.carReservation[key].departureDate[0] == "0") {
+                        let str2 = this.elements.carReservation[key].departureDate.substr(1);
+                        this.elements.carReservation[key].departureDate = str2;
+                    }
+                    if (this.elements.carReservation[key].arrivalDate[0] == "0") {
+                        let str2 = this.elements.carReservation[key].arrivalDate.substr(1);
+                        this.elements.carReservation[key].arrivalDate = str2;
+                    }
+                }
+
+
+                for (let i = 0; i < this.elements.carList.length; i++) {
+                    let employmentDays = 0;
+                    {#console.log(this.elements.carList);#}
+                    for (let key in this.elements.carReservation) {
+
+                        for (let b = 0; b < this.elements.carList[i].children.length; b++) {
+                            let departure = this.elements.carReservation[key].departureDate.split(" ");
+                            let myDateDeparte = new Date(departure[2], departure[1] - 1, departure[0]);
+
+                            let arrive = this.elements.carReservation[key].arrivalDate.split(" ");
+                            let myDateArrive = new Date(arrive[2], arrive[1] - 1, arrive[0]);
+
+                            {# colors #}
+                            let status = this.elements.carReservation[key].carStatus;
+
+                            let checkDate = this.elements.carList[i].children[b].title.split(" ");
+                            let myDateCheck = new Date(checkDate[2], checkDate[1] - 1, checkDate[0]);
+
+                            let checkCarList = this.elements.carList[i].title,
+                                titleCheckCarList = this.elements.carReservation[key].reserveCar;
+
+                            if ((myDateDeparte <= myDateCheck && myDateCheck <= myDateArrive) && checkCarList == titleCheckCarList) {
+                                let reserveIdTitle = this.elements.carReservation[key].reserveId;
+                                this.elements.carList[i].children[b].setAttribute("reserveid", reserveIdTitle);
+
+
+                                if (status === 'Выдана') {
+                                    this.elements.carList[i].children[b].classList.add("green");
+                                    employmentDays++;
+                                } else if (status === 'Бронь') {
+                                    this.elements.carList[i].children[b].classList.add("blue");
+                                } else if (status === 'Подтвержденная бронь') {
+                                    this.elements.carList[i].children[b].classList.add("yellow");
+                                } else if (status === 'Тех Работы') {
+                                    this.elements.carList[i].children[b].classList.add("red");
+                                }
+
+                            }
+                            if (checkCarList == titleCheckCarList) {
+                                let carTitleId = this.elements.carReservation[key].reserveCarId;
+                                this.elements.carList[i].children[b].setAttribute("carTitle", carTitleId);
+
+                            }
+
+
+                        }
+                    }
+                    {#console.log(employmentDays);#}
+                    this.elements.emplDays.push(employmentDays);
+                }
+
+                {#console.log(this.elements.emplDays);#}
+            }
+
+            drawMonths() {
+                let availableMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                let monthTemplate = "";
+                let calendar = this.getCalendar();
+                availableMonths.forEach((month, idx) => {
+                    monthTemplate += `<li class="${idx === calendar.active.month ? 'active' : ''}" data-month="${idx}">${month}</li>`
+                });
+
+                this.elements.month.innerHTML = monthTemplate;
+            }
+
+            drawWeekDays() {
+                let weekTemplate = "";
+                console.log(AVAILABLE_WEEK_DAYS);
+                AVAILABLE_WEEK_DAYS.forEach(week => {
+                    weekTemplate += `<li>${week.slice(0, 3)}</li>`
+                });
+
+                this.elements.week.innerHTML = weekTemplate;
+            }
+
+            // Service methods
+
+            eventsTrigger() {
+                this.elements.prevYear.addEventListener('click', e => {
+                    let calendar = this.getCalendar();
+                    this.updateTime(calendar.pYear);
+                    this.drawAll()
+                });
+
+                this.elements.nextYear.addEventListener('click', e => {
+                    let calendar = this.getCalendar();
+                    this.updateTime(calendar.nYear);
+                    this.drawAll()
+                });
+
+                this.elements.month.addEventListener('click', e => {
+                    let calendar = this.getCalendar();
+                    let month = e.srcElement.getAttribute('data-month');
+                    let newMonth = new Date(calendar.active.tm).setMonth(month);
+                    this.updateTime(newMonth);
+                    this.drawAll();
+
+                });
+
+
+                this.elements.days.addEventListener('click', e => {
+                    let element = e.srcElement;
+                    let day = element.getAttribute('data-day');
+                    let month = element.getAttribute('data-month');
+                    let year = element.getAttribute('data-year');
+                    let strDate = `${Number(month) + 1}/${day}/${year}`;
+                    this.updateTime(strDate);
+                    this.drawAll()
+                });
+
+
+            }
+
+
+            updateTime(time) {
+                this.date = +new Date(time);
+            }
+
+            getCalendar() {
+                let time = new Date(this.date);
+
+                return {
+                    active: {
+                        days: this.countOfDaysInMonth(time),
+                        startWeek: this.getStartedDayOfWeekByTime(time),
+                        day: time.getDate(),
+                        week: time.getDay(),
+                        month: time.getMonth(),
+                        year: time.getFullYear(),
+                        formatted: this.getFormattedDate(time),
+                        tm: +time
+                    },
+                    pMonth: new Date(time.getFullYear(), time.getMonth() - 1, 1),
+                    nMonth: new Date(time.getFullYear(), time.getMonth() + 1, 1),
+                    pYear: new Date(new Date(time).getFullYear() - 1, 0, 1),
+                    nYear: new Date(new Date(time).getFullYear() + 1, 0, 1)
+                }
+            }
+
+            countOfDaysInMonth(time) {
+                let date = this.getMonthAndYear(time);
+                return new Date(date.year, date.month + 1, 0).getDate();
+            }
+
+            getStartedDayOfWeekByTime(time) {
+                let date = this.getMonthAndYear(time);
+                return new Date(date.year, date.month, 1).getDay();
+            }
+
+            getMonthAndYear(time) {
+                let date = new Date(time);
+                return {
+                    year: date.getFullYear(),
+                    month: date.getMonth()
+                }
+            }
+
+            getFormattedDate(date) {
+                return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+            }
+
+            range(number) {
+                return new Array(number).fill().map((e, i) => i);
+            }
+
+            getFirstElementInsideIdByClassName(className) {
+                return document.getElementById(this.options.id).getElementsByClassName(className)[0];
+            }
+        }
+
+
+        (
+
+            function () {
+                new CALENDAR({
+                    id: "calendar"
+                })
+            }
+
+        )()
+        ;
+
+    </script>
+{% endblock %}

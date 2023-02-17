@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+    Эконом класс |
+{% endblock %}
+{% block content %}
+
+    <!--=================================
+     inner-intro -->
+
+    <section class="inner-intro bg-1 bg-overlay-black-70">
+        <div class="container">
+            <div class="row text-center intro-title">
+                <div class="col-md-6 text-md-left d-inline-block">
+                    <h1 class="text-white">{% trans 'Кроссовер класс' %} </h1>
+                </div>
+                <div class="col-md-6 text-md-right float-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                                class="fa fa-angle-double-right"></i>
+                        </li>
+                        <li><a href="#">{% trans 'Кроссовер класс' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     inner-intro -->
+    <!--=================================
+ feature-car -->
+
+    <section class="feature-car page-section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme" data-nav-arrow="true" data-items="4" data-md-items="4"
+                         data-sm-items="2" data-xs-items="1" data-space="20">
+                        {% for x in object_list %}
+                            <div class="item">
+                                <div class="car-item text-center">
+                                    <a href="{% url 'car_detail' x.pk %}">
+                                        <div class="car-image">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <div class="car-overlay-banner">
+                                                <ul>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="car-list">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-registered"></i> {{ x.year }}</li>
+                                                <li><i class="fa fa-cog"></i>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        {% if x.gear_box == 'Механика' %}
+                                                            Mechanics
+                                                        {% elif x.gear_box == 'Вариатор' %}
+                                                            Variator
+                                                        {% elif x.gear_box == 'Автомат' %}
+                                                            Automatic
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ x.gear_box }}
+                                                    {% endif %}
+                                                </li>
+                                                <li><i class="fa fa-dashboard"></i> {{ x.engine_cap }} {% trans 'куб' %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="car-content">
+                                            <div class="star">
+                                                {% if x.car_class == 'Эконом (класс B)' %}
+                                                    <a href="{% url 'class_b' %}"
+                                                       class="old-price">#{% trans 'Эконом' %}</a>
+                                                {% elif x.car_class == 'Средний (класс C)' %}
+                                                    <a href="{% url 'class_c' %}"
+                                                       class="old-price">#{% trans 'Средний' %}</a>
+                                                {% elif x.car_class == 'Бизнес (класс Е)' %}
+                                                    <a href="{% url 'class_e' %}"
+                                                       class="old-price">#{% trans 'Бизнес' %}</a>
+                                                {% elif x.car_class == 'Кроссовер (класс J)' %}
+                                                    <a href="{% url 'class_j' %}"
+                                                       class="old-price">#{% trans 'Кроссовер' %}</a>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'car_detail' x.pk %}">{{ x.title }}</a>
+                                            <div class="separator"></div>
+                                            <div class="price">
+                                                <span class="new-price">{% trans 'от' %} {{ x.price_20 }} {% trans 'сом/сут' %} </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class='formatBlock'><h2>{% trans 'Кроссовер класс' %}</h2><br>
+                        <p>{% blocktrans %}Если вы активный человек, и не можете представить свою жизнь без движения,
+                            кроссовер – это ваше авто.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Машины класса J отличаются повышенной проходимостью и прекрасно подходят для
+                            поездок по пересеченной местности. Благодаря хорошей маневренности на них удобно
+                            перемещаться и по оживленным дорогам.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Взяв на прокат автомобиль, вы можете совершить поездку по городу, отправиться
+                            к друзьям в другой населенный пункт и выбраться вместе на веселый пикник. Машина оснащена
+                            современным оборудованием, поэтому путешествие будет комфортным и безопасным. А в просторном
+                            салоне с удобством разместится целая компания.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Возможно, именно сейчас вы думаете о приобретении нового авто, и пока еще не
+                            сделали окончательный выбор. Возьмите в аренду кроссовер и проведите тест-драйв. Находясь за
+                            рулем в течение нескольких дней, вы сможете оценить все преимущества машины,
+                            проанализировать ее характеристики, и, наконец-то, принять взвешенное
+                            решение.{% endblocktrans %}</p>
+                        <p>{% blocktrans %}Оформить аренду авто в Бишкеке так же просто, как вызвать такси. Поэтому
+                            воспользоваться услугой проката кросовера вы сможете в любое удобное время. Обращайтесь в
+                            наш центр проката и подбирайте машину с учетом всех своих пожеланий.{% endblocktrans %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=================================
+     feature-car -->
+
+
+{% endblock %}
