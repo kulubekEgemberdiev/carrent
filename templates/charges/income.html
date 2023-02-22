@@ -29,18 +29,27 @@
     <section class="welcome-block objects-car why-choose page-section-ptb white-bg">
         <div class="container">
             <div class="row">
+                <a href="{% url 'income_create' %}" class="btn btn-success mb-3">Добавить запись</a>
+
+            </div>
+            <div class="row">
                 <table class="table table-bordered table-hover toggle-circle" id="exampleFootableFiltering"
                        data-paging="true" data-filtering="true" data-sorting="true">
                     <tr>
                         <th data-name="carName">Название машины</th>
                         <th data-name="balance">Сумма</th>
                         <th data-name="date">Дата</th>
+                        <th data-name="management">Управление</th>
                     </tr>
                     {% for x in object_list %}
                         <tr class="show-hide-block">
                             <td class="income-car-title">{{ x.car_income_id }}</td>
                             <td>{{ x.income_amount }}</td>
                             <td>{{ x.order_date }}</td>
+                            <td>
+                                <a href="{% url 'income_update' x.pk %}" class="btn">Изменить</a>
+                                <a href="{% url 'income_delete' x.pk %}" class="btn">Удалить</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     <tr>
@@ -50,6 +59,7 @@
                 </table>
             </div>
         </div>
+
 
     </section>
     <script>

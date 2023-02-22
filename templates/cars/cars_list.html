@@ -2,7 +2,7 @@
 {% load static i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block description %}
-Аренда авто Бишкек - предлагаем услуги по аренде автомобилей в Бишкеке. У нас Вы найдете любую машину на Ваш выбор
+    Аренда авто Бишкек - предлагаем услуги по аренде автомобилей в Бишкеке. У нас Вы найдете любую машину на Ваш выбор
 {% endblock %}
 {% if LANGUAGE_CODE == 'ru' %}
     {% block ru_title %}Автомобили |{% endblock %}
@@ -33,10 +33,10 @@
                 </div>
                 <div class="col-md-6 text-md-right float-right">
                     <ul class="page-breadcrumb">
-                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
+                        <li><a href="#"><i class="fa fa-home"></i> {% trans 'Главная' %}</a> <i
                                 class="fa fa-angle-double-right"></i>
                         </li>
-                        <li><a href="{% url 'cars_list' %}">{% trans 'Автомобили' %}</a></li>
+                        <li><a href="#">{% trans 'Автомобили' %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-12 ">
+                <div class="col-lg-9 col-md-12">
                     <div class="isotope column-3" style="overflow: hidden">
                         {% for x in object_list %}
                             <div class="grid-item {% if x.car_class == 'Эконом (класс B)' %}
@@ -85,7 +85,8 @@
                                 <a href="{% url 'car_detail' x.pk %}">
                                     <div class="car-item car-item-4 text-center">
                                         <div class="car-image">
-                                            <img class="img-fluid" src="{{ x.image1.url }}" alt="">
+                                            <img class="img-fluid" src="{{ x.image1.url }}" alt=""
+                                            style="width: 400px; height: 250px;">
                                             <div class="car-overlay-banner">
                                                 <ul>
                                                 </ul>
@@ -156,7 +157,8 @@
             <form action="{% url 'send_email' %}">
                 <div class="main-title-modal">
                     <h2>{% trans 'Экспресс заявка' %}</h2>
-                    <p class="">{% blocktrans %}Заполните экспресс заявку и наши менеджеры свяжутся с вами для заполнения
+                    <p class="">{% blocktrans %}Заполните экспресс заявку и наши менеджеры свяжутся с вами для
+                        заполнения
                         заявки по
                         телефону.{% endblocktrans %}</p>
                 </div>

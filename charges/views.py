@@ -1,7 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.views import View
+
 from .models import Income, Outcome, Profit
 from django.views.generic import ListView, UpdateView, DetailView, DeleteView, CreateView
 
@@ -28,7 +30,7 @@ class IncomeUpdateView(UpdateView):
     success_url = reverse_lazy('income')
 
 
-class IncomeDeleteVieW(DeleteView):
+class IncomeDeleteView(DeleteView):
     model = Income
     template_name = 'charges/income_delete.html'
     success_url = reverse_lazy('income')
